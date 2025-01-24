@@ -26,18 +26,22 @@ Welcome to the repository for my personal portfolio website! This project showca
 ## Pages Overview
 
 ### 1. **Home Page**
+
 - Introduction with name, title, and tagline.
 - Quick navigation to other sections.
 
 ### 2. **Projects Page**
+
 - Detailed showcase of my projects.
 - Includes preview images, descriptions, and links to GitHub repositories/live demos.
 
 ### 3. **Contact Page**
+
 - Contact form with fields for name, email, and message.
 - Option to directly link to social media accounts.
 
 ### 4. **Custom 404 Page**
+
 - Friendly and professional error page for non-existent routes.
 
 ---
