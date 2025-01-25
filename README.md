@@ -1,86 +1,36 @@
-# Personal Portfolio Website
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-Welcome to the repository for my personal portfolio website! This project showcases my skills, experience, and projects, built using **React** and **Next.js**.
+## Getting Started
 
----
+First, run the development server:
 
-## Features
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-- **Responsive Design**: Optimized for desktop, tablet, and mobile.
-- **Dark Mode**: Toggle between light and dark themes.
-- **Project Showcase**: Displays projects with descriptions, images, and links to live demos and repositories.
-- **Contact Form**: Visitors can reach out directly through the site.
-- **SEO Optimized**: Ensures the website ranks well in search engines.
-- **Fast and Lightweight**: Leveraging Next.js for server-side rendering and image optimization.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
----
+You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-## Tech Stack
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-- **Framework**: ![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)
-- **Frontend**: ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black), ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white), ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
-- **Deployment**: ![Plesk](https://img.shields.io/badge/Plesk-2C4F8C?style=for-the-badge&logo=plesk&logoColor=white)
+## Learn More
 
----
+To learn more about Next.js, take a look at the following resources:
 
-## Pages Overview
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-### 1. **Home Page**
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-- Introduction with name, title, and tagline.
-- Quick navigation to other sections.
+## Deploy on Vercel
 
-### 2. **Projects Page**
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-- Detailed showcase of my projects.
-- Includes preview images, descriptions, and links to GitHub repositories/live demos.
-
-### 3. **Contact Page**
-
-- Contact form with fields for name, email, and message.
-- Option to directly link to social media accounts.
-
-### 4. **Custom 404 Page**
-
-- Friendly and professional error page for non-existent routes.
-
----
-
-## Deployment
-
-This project is hosted on **Plesk**. Any changes pushed to the `main` branch will automatically deploy.
-
----
-
-## Roadmap
-
-- [ ] Add animations using Framer Motion.
-- [ ] Integrate a CMS (e.g., Sanity or Contentful) for blog functionality.
-- [ ] Expand the Projects section with filters and categories.
-- [ ] Add testimonials or a "What People Say" section.
-
----
-
-## Contributing
-
-Contributions are welcome! Feel free to fork this repository and submit a pull request with your suggestions.
-
----
-
-## License
-
-This project is open-source and available under the MIT License.
-
----
-
-## Contact
-
-For any inquiries, feel free to reach out:
-
-- **Email**: [daniel@danielvanginneken.nl](mailto:daniel@danielvanginneken.nl)
-- **LinkedIn**: [daniel-v-ginneken](https://linkedin.com/in/daniel-v-ginneken/)
-- **GitHub**: [DanielvG-IT](https://github.com/DanielvG-IT)
-
----
-
-Thank you for visiting my portfolio repository!
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
