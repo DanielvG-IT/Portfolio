@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { use } from "react";
 
 const links = [
   {
@@ -34,11 +33,13 @@ const Nav = () => {
       {links.map((link, index) => {
         return (
           <Link
-            className={`${
-              link.path === pathname && "text-accent border-b-2 border-accent"
-            } capitalize font-medium hover:text-accent transition-all`}
+            key={index}
             href={link.path}
-            key={index}>
+            className={`capitalize font-medium hover:text-accent transition-all
+                  ${
+                    link.path === pathname &&
+                    "text-accent border-b-2 border-accent"
+                  }`}>
             {link.name}
           </Link>
         );
