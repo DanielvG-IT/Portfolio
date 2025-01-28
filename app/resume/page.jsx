@@ -34,7 +34,7 @@ const about = {
     "I am a full stack developer with a passion for creating beautiful and functional websites. I am always looking to learn new things and improve my skills.",
   info: [
     { fieldName: "Name", fieldValue: "Daniël van Ginneken" },
-    { fieldName: "Email", fieldValue: "daniel@danielvanginneken.nl" },
+    { fieldName: "Email", fieldValue: "info@danielvanginneken.nl" },
     { fieldName: "Phone", fieldValue: "(+31) 0165 123 4567" },
     { fieldName: "Experience", fieldValue: "1 Year" },
     { fieldName: "Nationality", fieldValue: "Dutch" },
