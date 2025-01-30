@@ -20,7 +20,7 @@ const Photo = () => {
             transition: { delay: 2.4, duration: 0.4, ease: "easeInOut" },
           }}>
           <Image
-            src="/assets/Daniel-Picture.png"
+            src="/assets/Daniel-picture.png"
             priority
             quality={100}
             fill
