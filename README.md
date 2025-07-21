@@ -48,7 +48,7 @@ Welcome to the repository for my personal portfolio website! This project showca
 
 ## Deployment
 
-This project is hosted on **Plesk**. Any changes pushed to the `main` branch will automatically deploy.
+This project is hosted on **Dokploy**. Any changes pushed to the `main` branch will automatically deploy.
 
 ---
 
