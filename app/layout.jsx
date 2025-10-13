@@ -24,6 +24,10 @@ export default function RootLayout({ children }) {
         <Header />
         <StairTransition />
         <PageTransition>{children}</PageTransition>
+        <script
+          src="https://analytics.danielvanginneken.nl/script.js"
+          data-website-id="f8df5f91-666d-4009-b953-df53eb95d476"
+        />
       </body>
     </html>
   );
