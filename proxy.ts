@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 
 import { defaultLocale, isLocale } from "@/lib/site";
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const [, maybeLocale] = pathname.split("/");
 
