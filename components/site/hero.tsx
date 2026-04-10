@@ -14,7 +14,12 @@ interface HeroProps {
   portraitCaption: string;
 }
 
-export function Hero({ locale, content, dictionary, portraitCaption }: HeroProps) {
+export function Hero({
+  locale,
+  content,
+  dictionary,
+  portraitCaption,
+}: HeroProps) {
   return (
     <section className="container mx-auto pt-10 md:pt-14 xl:pt-20">
       <div className="grid gap-8 xl:grid-cols-[minmax(0,1.2fr)_minmax(320px,440px)] xl:items-center">
@@ -40,7 +45,7 @@ export function Hero({ locale, content, dictionary, portraitCaption }: HeroProps
               items={[
                 {
                   label: dictionary.common.downloadResume,
-                  href: resumeFile,
+                  href: resumeFile(locale),
                   download: true,
                 },
                 {
@@ -80,10 +85,7 @@ export function Hero({ locale, content, dictionary, portraitCaption }: HeroProps
           </div>
         </div>
 
-        <PortraitBlock
-          priority
-          caption={portraitCaption}
-        />
+        <PortraitBlock priority caption={portraitCaption} />
       </div>
     </section>
   );

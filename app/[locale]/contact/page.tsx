@@ -63,7 +63,10 @@ export default async function ContactPage({
     },
     {
       label: localeParam === "nl" ? "Locatie" : "Location",
-      value: localeParam === "nl" ? "Noord-Brabant, Nederland" : "North Brabant, the Netherlands",
+      value:
+        localeParam === "nl"
+          ? "Noord-Brabant, Nederland"
+          : "North Brabant, the Netherlands",
       href: "https://maps.google.com/?q=North+Brabant+Netherlands",
       note:
         localeParam === "nl"
@@ -79,7 +82,9 @@ export default async function ContactPage({
         <SectionIntro {...dictionary.contactPage.intro} />
         <div className="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="surface-card p-7 md:p-8">
-            <p className="eyebrow">{dictionary.contactPage.availabilityTitle}</p>
+            <p className="eyebrow">
+              {dictionary.contactPage.availabilityTitle}
+            </p>
             <p className="mt-4 text-xl font-semibold tracking-[-0.03em]">
               {dictionary.contactPage.availabilityTitle}
             </p>
@@ -103,8 +108,16 @@ export default async function ContactPage({
                 <Link
                   key={method.label}
                   href={method.href}
-                  target={method.label === "Location" ? "_blank" : method.href.startsWith("mailto:") ? undefined : "_blank"}
-                  rel={method.href.startsWith("mailto:") ? undefined : "noreferrer"}
+                  target={
+                    method.label === "Location"
+                      ? "_blank"
+                      : method.href.startsWith("mailto:")
+                        ? undefined
+                        : "_blank"
+                  }
+                  rel={
+                    method.href.startsWith("mailto:") ? undefined : "noreferrer"
+                  }
                   className="surface-card flex items-start gap-4 p-6 transition-transform hover:-translate-y-0.5">
                   <div className="rounded-full bg-background-muted p-3 text-accent">
                     <Icon className="h-5 w-5" />
@@ -112,7 +125,9 @@ export default async function ContactPage({
                   <div>
                     <p className="eyebrow">{method.label}</p>
                     <p className="mt-3 text-lg font-medium">{method.value}</p>
-                    <p className="mt-3 text-sm leading-6 text-foreground-soft">{method.note}</p>
+                    <p className="mt-3 text-sm leading-6 text-foreground-soft">
+                      {method.note}
+                    </p>
                   </div>
                 </Link>
               );
@@ -125,8 +140,12 @@ export default async function ContactPage({
         <div className="surface-card grid gap-8 p-8 md:p-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
           <div>
             <p className="eyebrow">{dictionary.home.contact.eyebrow}</p>
-            <h2 className="section-title mt-4">{dictionary.home.contact.title}</h2>
-            <p className="section-copy mt-5">{dictionary.home.contact.description}</p>
+            <h2 className="section-title mt-4">
+              {dictionary.home.contact.title}
+            </h2>
+            <p className="section-copy mt-5">
+              {dictionary.home.contact.description}
+            </p>
           </div>
           <div className="lg:justify-self-end">
             <CTAGroup
@@ -143,7 +162,7 @@ export default async function ContactPage({
                 },
                 {
                   label: dictionary.common.downloadResume,
-                  href: resumeFile,
+                  href: resumeFile(localeParam),
                   variant: "secondary",
                   download: true,
                 },

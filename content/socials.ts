@@ -1,6 +1,10 @@
-import type { SocialLink } from "@/types/site";
+import type { Locale, SocialLink } from "@/types/site";
 
-export const resumeFile = "/resume/daniel-van-ginneken-resume.pdf";
+export const resumeFile = (locale: Locale) => {
+  const language = locale === "nl" ? "NL" : "EN";
+
+  return `https://github.com/DanielvG-IT/DanielvG-IT/raw/refs/heads/main/Curriculum%20Vitae%20(${language}).pdf`;
+};
 
 export const socialLinks: SocialLink[] = [
   {

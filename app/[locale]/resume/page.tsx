@@ -66,7 +66,7 @@ export default async function ResumePage({
           </div>
           <div className="lg:justify-self-end">
             <Button asChild size="lg">
-              <Link href={resumeFile} download>
+              <Link href={resumeFile(localeParam)} download>
                 {dictionary.common.downloadResume}
               </Link>
             </Button>
@@ -91,7 +91,9 @@ export default async function ResumePage({
         />
         <div className="grid gap-5 lg:grid-cols-2">
           {education.map((entry) => (
-            <article key={`${entry.period}-${entry.title}`} className="surface-card p-6 md:p-7">
+            <article
+              key={`${entry.period}-${entry.title}`}
+              className="surface-card p-6 md:p-7">
               <p className="eyebrow">{entry.period}</p>
               <h2 className="mt-4 text-2xl font-semibold tracking-[-0.03em]">
                 {entry.title}
@@ -99,7 +101,9 @@ export default async function ResumePage({
               <p className="mt-2 text-sm font-medium text-foreground-soft">
                 {entry.organization}
               </p>
-              <p className="mt-4 text-base leading-7 text-foreground-soft">{entry.summary}</p>
+              <p className="mt-4 text-base leading-7 text-foreground-soft">
+                {entry.summary}
+              </p>
             </article>
           ))}
         </div>

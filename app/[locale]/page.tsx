@@ -13,7 +13,12 @@ import { Timeline } from "@/components/site/timeline";
 import { resumeFile } from "@/content/socials";
 import { getCapabilityClusters, getJourneyTimeline } from "@/content/journey";
 import { getProjectsByStatus } from "@/content/projects";
-import { buildPageMetadata, getDictionary, getLocalizedPath, isLocale } from "@/lib/site";
+import {
+  buildPageMetadata,
+  getDictionary,
+  getLocalizedPath,
+  isLocale,
+} from "@/lib/site";
 
 export async function generateMetadata({
   params,
@@ -86,7 +91,9 @@ export default async function HomePage({
           <div className="grid gap-5 md:grid-cols-3">
             {dictionary.home.infrastructure.points.map((point) => (
               <article key={point.title} className="surface-card p-6">
-                <h3 className="text-xl font-semibold tracking-[-0.03em]">{point.title}</h3>
+                <h3 className="text-xl font-semibold tracking-[-0.03em]">
+                  {point.title}
+                </h3>
                 <p className="mt-4 text-sm leading-6 text-foreground-soft">
                   {point.description}
                 </p>
@@ -116,7 +123,11 @@ export default async function HomePage({
         </div>
         <div className="grid gap-5 xl:grid-cols-3">
           {previewProjects.map((project) => (
-            <ProjectCard key={project.slug} project={project} dictionary={dictionary} />
+            <ProjectCard
+              key={project.slug}
+              project={project}
+              dictionary={dictionary}
+            />
           ))}
         </div>
         <div className="mt-8">
@@ -161,8 +172,12 @@ export default async function HomePage({
         <div className="surface-card grid gap-8 p-8 md:p-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
           <div>
             <p className="eyebrow">{dictionary.home.contact.eyebrow}</p>
-            <h2 className="section-title mt-4">{dictionary.home.contact.title}</h2>
-            <p className="section-copy mt-5">{dictionary.home.contact.description}</p>
+            <h2 className="section-title mt-4">
+              {dictionary.home.contact.title}
+            </h2>
+            <p className="section-copy mt-5">
+              {dictionary.home.contact.description}
+            </p>
           </div>
           <div className="lg:justify-self-end">
             <CTAGroup
@@ -179,7 +194,7 @@ export default async function HomePage({
                 },
                 {
                   label: dictionary.common.downloadResume,
-                  href: resumeFile,
+                  href: resumeFile(localeParam),
                   variant: "secondary",
                   download: true,
                 },
