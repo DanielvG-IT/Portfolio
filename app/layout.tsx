@@ -4,7 +4,16 @@ import { Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import type { ReactNode } from "react";
 
 import { ThemeProvider } from "@/components/providers/theme-provider";
-import { defaultLocale, isLocale, siteUrl } from "@/lib/site";
+import {
+  defaultLocale,
+  getAlternateLanguageUrls,
+  getMetadataImageUrl,
+  isLocale,
+  localeMetadata,
+  metadataImage,
+  personName,
+  siteUrl,
+} from "@/lib/site";
 
 import "./globals.css";
 
@@ -21,31 +30,70 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Daniël van Ginneken",
-    template: "%s | Daniël van Ginneken",
+    default: personName,
+    template: `%s | ${personName}`,
   },
   description:
-    "Premium bilingual portfolio of Daniël van Ginneken, a software developer with infrastructure roots.",
-  applicationName: "Daniël van Ginneken",
+    "Bilingual portfolio of Daniël van Ginneken, a software developer with infrastructure roots, built for internships, long-term credibility, and serious technical growth.",
+  applicationName: personName,
+  authors: [{ name: personName, url: siteUrl }],
+  creator: personName,
+  publisher: personName,
+  category: "technology",
+  keywords: [
+    "Daniël van Ginneken",
+    "Daniel van Ginneken",
+    "software developer",
+    "software developer netherlands",
+    "software development student",
+    "software development internship",
+    "portfolio",
+    "Next.js portfolio",
+    "infrastructure roots",
+    "system support",
+    "Linux",
+    "networking",
+    "Netherlands",
+    "Nederland",
+    "software developer nederland",
+    "software development student netherlands",
+    "portfolio software developer",
+    "infrastructuurroots",
+  ],
+  referrer: "origin-when-cross-origin",
+  manifest: "/manifest.webmanifest",
   alternates: {
-    languages: {
-      nl: `${siteUrl}/nl`,
-      en: `${siteUrl}/en`,
-    },
+    languages: getAlternateLanguageUrls("home"),
   },
   openGraph: {
     type: "website",
-    siteName: "Daniël van Ginneken",
-    title: "Daniël van Ginneken",
+    siteName: personName,
+    locale: localeMetadata.nl.ogLocale,
+    alternateLocale: [localeMetadata.en.ogLocale],
+    title: personName,
     description:
       "Software developer with infrastructure roots, building modern software on top of strong technical foundations.",
-    url: siteUrl,
+    url: `${siteUrl}/nl`,
+    images: [
+      {
+        url: getMetadataImageUrl(defaultLocale, "opengraph"),
+        width: metadataImage.width,
+        height: metadataImage.height,
+        alt: metadataImage.alt,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Daniël van Ginneken",
+    title: personName,
     description:
       "Software developer with infrastructure roots, building modern software on top of strong technical foundations.",
+    images: [
+      {
+        url: getMetadataImageUrl(defaultLocale, "twitter"),
+        alt: metadataImage.alt,
+      },
+    ],
   },
 };
 
@@ -66,12 +114,12 @@ export default async function RootLayout({
   const locale = isLocale(localeHeader) ? localeHeader : defaultLocale;
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={localeMetadata[locale].htmlLang} suppressHydrationWarning>
       <body
         className={`${instrumentSans.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange>
           {children}

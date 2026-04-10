@@ -110,7 +110,7 @@ const projectsByLocale: Record<Locale, ProjectEntry[]> = {
     },
     {
       slug: "frontend-coursework-builds",
-      title: "Frontend coursework builds",
+      title: "Frontend studieprojecten",
       status: "exploration",
       category: "Schoolwerk / UI-oefening",
       year: "2024-2026",
@@ -146,7 +146,7 @@ const projectsByLocale: Record<Locale, ProjectEntry[]> = {
         "Een groeiende stroom kleinere ideeën rond Linux-workflows, deployment awareness, troubleshootingpatronen en praktische automatisering.",
       context:
         "Hier kan infrastructuurervaring uitgroeien tot bruikbare softwareworkflows, notities en uiteindelijk kleine tools.",
-      stack: ["Linux", "Netwerken", "Automation thinking"],
+      stack: ["Linux", "Netwerken", "Automatiseringsdenken"],
       links: {},
       note: "Publieke output groeit hier geleidelijk, zonder het geforceerd als contentmachine te behandelen.",
     },

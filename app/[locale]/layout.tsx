@@ -1,9 +1,12 @@
 import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 
+import { StructuredData } from "@/components/site/structured-data";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { getDictionary, isLocale, locales } from "@/lib/site";
+
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -26,6 +29,7 @@ export default async function LocaleLayout({
 
   return (
     <div className="page-shell flex min-h-screen flex-col">
+      <StructuredData locale={localeParam} dictionary={dictionary} />
       <SiteHeader locale={localeParam} dictionary={dictionary} />
       <main className="flex-1">{children}</main>
       <SiteFooter locale={localeParam} dictionary={dictionary} />

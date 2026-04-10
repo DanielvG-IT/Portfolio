@@ -9,27 +9,27 @@ export const nlSite: SiteDictionary = {
         "Tweetalig portfolio van Daniël van Ginneken, een jonge software developer die bouwt op sterke technische fundamenten in systemen, netwerken en troubleshooting.",
     },
     about: {
-      title: "Over",
+      title: "Over Daniël van Ginneken",
       description:
         "Lees meer over Daniël van Ginneken, zijn technische achtergrond, manier van werken en waarom infrastructuurroots zijn software-aanpak versterken.",
     },
     projects: {
-      title: "Projecten",
+      title: "Projecten en technische verkenningen",
       description:
         "Geselecteerde builds, technische verkenningen en huidig werk van Daniël van Ginneken.",
     },
     journey: {
-      title: "Pad",
+      title: "Van infrastructuur naar softwareontwikkeling",
       description:
-        "Van systems support en infrastructuur naar softwareontwikkeling: het pad dat Daniël van Ginneken heeft gevormd.",
+        "Van system support en infrastructuur naar softwareontwikkeling: het pad dat Daniël van Ginneken heeft gevormd.",
     },
     resume: {
-      title: "CV",
+      title: "CV, ervaring en opleiding",
       description:
-        "Ervaring, opleiding, capabilities en tooling van Daniël van Ginneken.",
+        "Ervaring, opleiding en technische focus van Daniël van Ginneken.",
     },
     contact: {
-      title: "Contact",
+      title: "Contact met Daniël van Ginneken",
       description:
         "Neem contact op met Daniël van Ginneken voor stages, kansen of technische gesprekken.",
     },
@@ -79,7 +79,7 @@ export const nlSite: SiteDictionary = {
         "Een developer gevormd door echte infrastructuur.",
       ],
       intro:
-        "Ik ben Daniël van Ginneken, een 19-jarige software development student uit Nederland. Mijn achtergrond in systems support en infrastructuur gaf me een praktische technische basis. Nu ga ik bewust dieper richting software engineering.",
+        "Ik ben Daniël van Ginneken, een 19-jarige student software development uit Nederland. Mijn achtergrond in system support en infrastructuur gaf me een praktische technische basis. Nu ga ik bewust dieper richting software engineering.",
       detailLines: [
         "Softwareontwikkeling is de primaire richting.",
         "Infrastructuurkennis voegt diepte toe in troubleshooting, systeemdenken en betrouwbaarheid.",
@@ -122,17 +122,17 @@ export const nlSite: SiteDictionary = {
       description:
         "Het doel is niet om een gepolijst senior portfolio te faken. Het doel is om het sterkste huidige werk te laten zien, de gebieden die nog in verkenning zijn, en wat er actief daarna gebouwd wordt.",
       honestyNote:
-        "Case-study-ready projecten zijn nog beperkt. Juist daarom splitst de site geselecteerd werk, verkenningen en work in progress.",
+        "Case-study-ready projecten zijn nog beperkt. Juist daarom splitst de site geselecteerd werk, verkenningen en werk in uitvoering.",
     },
     journey: {
       eyebrow: "Pad",
-      title: "Van MSP en systems support richting software engineering.",
+      title: "Van MSP en system support richting software engineering.",
       description:
         "Dit pad is relevant omdat het de mindset achter het werk verklaart: praktisch, technisch en gevormd in echte omgevingen voordat de focus dieper naar software verschoof.",
     },
     capabilities: {
-      eyebrow: "Capabilities",
-      title: "Skills getoond als fundamenten, huidige tools en volgende groeigebieden.",
+      eyebrow: "Technische focus",
+      title: "Vaardigheden getoond als fundamenten, huidige tools en volgende groeigebieden.",
       description:
         "Deze site gebruikt geen percentages of opgeblazen labels. De focus ligt op wat nu gebruikt wordt, wat al stevig is, en wat hierna verder verdiept wordt.",
     },
@@ -215,13 +215,13 @@ export const nlSite: SiteDictionary = {
   journeyPage: {
     intro: {
       eyebrow: "Pad",
-      title: "Van systems support naar softwareontwikkeling.",
+      title: "Van system support naar softwareontwikkeling.",
       description:
         "Dit pad is relevant omdat het verklaart waarom het werk zo gegrond aanvoelt en waarom software nu de hoofdrichting is.",
     },
     transitionTitle: "Wat dit pad toevoegt aan de softwarekant",
     transitionDescription:
-      "De infrastructuurachtergrond is niet de headline-identiteit, maar voegt wel praktische sterke punten toe die bruikbaar zijn in softwareontwikkeling.",
+      "De infrastructuurachtergrond is niet de hoofdidentiteit, maar voegt wel praktische sterke punten toe die bruikbaar zijn in softwareontwikkeling.",
     transitionPoints: [
       {
         title: "Rustiger debuggen",
@@ -248,10 +248,10 @@ export const nlSite: SiteDictionary = {
         "Dit is een compacte samenvatting van de achtergrond achter het portfolio: echte technische fundamenten, software als hoofdrichting en ruimte om verder te groeien.",
     },
     summary:
-      "Software developer in ontwikkeling, gebouwd op systems support ervaring, infrastructuurbewustzijn en een bewuste beweging richting sterker software engineering werk.",
+      "Software developer in ontwikkeling, gebouwd op ervaring in system support, infrastructuurbewustzijn en een bewuste beweging richting sterker software engineering werk.",
     experienceTitle: "Ervaring",
     educationTitle: "Opleiding",
-    capabilitiesTitle: "Capabilitygebieden",
+    capabilitiesTitle: "Technische focusgebieden",
     toolsTitle: "Tools en technologieën",
   },
   contactPage: {

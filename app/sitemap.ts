@@ -1,18 +1,32 @@
 import type { MetadataRoute } from "next";
 
-import { locales, routeMap, siteUrl } from "@/lib/site";
+import {
+  defaultLocale,
+  getAbsoluteUrl,
+  getAlternateLanguageUrls,
+  getLocalizedPath,
+  locales,
+  routeMap,
+} from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const paths = Object.values(routeMap);
+  const routes = Object.keys(routeMap) as Array<keyof typeof routeMap>;
 
   return locales.flatMap((locale) =>
-    paths.map((path) => {
-      const suffix = path ? `/${path}` : "";
+    routes.map((route) => {
+      const path = getLocalizedPath(locale, route);
+      const isHome = route === "home";
+      const isDefaultLocale = locale === defaultLocale;
 
       return {
-        url: `${siteUrl}/${locale}${suffix}`,
+        url: getAbsoluteUrl(path),
         lastModified: now,
+        changeFrequency: isHome ? "monthly" : "weekly",
+        priority: isHome ? (isDefaultLocale ? 1 : 0.9) : route === "contact" ? 0.7 : 0.8,
+        alternates: {
+          languages: getAlternateLanguageUrls(route),
+        },
       };
     }),
   );

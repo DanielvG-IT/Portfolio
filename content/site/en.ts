@@ -4,32 +4,32 @@ export const enSite: SiteDictionary = {
   localeLabel: "English",
   meta: {
     home: {
-      title: "Software developer with infrastructure roots",
+      title: "Software Developer with Infrastructure Roots",
       description:
         "Bilingual portfolio of Daniël van Ginneken, a young software developer building on top of strong technical foundations in systems, networking, and troubleshooting.",
     },
     about: {
-      title: "About",
+      title: "About Daniël van Ginneken",
       description:
         "Learn more about Daniël van Ginneken, his technical background, working style, and why infrastructure roots shape his software approach.",
     },
     projects: {
-      title: "Projects",
+      title: "Projects and Technical Explorations",
       description:
         "Selected builds, technical explorations, and current work from Daniël van Ginneken.",
     },
     journey: {
-      title: "Journey",
+      title: "From Infrastructure to Software Development",
       description:
         "From systems support and infrastructure into software development: the path that shaped Daniël van Ginneken.",
     },
     resume: {
-      title: "Resume",
+      title: "Resume, Experience, and Education",
       description:
         "Experience, education, capabilities, and tools for Daniël van Ginneken.",
     },
     contact: {
-      title: "Contact",
+      title: "Contact Daniël van Ginneken",
       description:
         "Get in touch with Daniël van Ginneken for internships, opportunities, or technical conversations.",
     },
