@@ -1,3 +1,5 @@
+import type { Route } from "next";
+
 import en from "@/content/en.json";
 import nl from "@/content/nl.json";
 
@@ -21,13 +23,13 @@ export function getMessages(locale: Locale): Messages {
   return messagesByLocale[locale];
 }
 
-export function localePath(locale: Locale, href: string): string {
+export function localePath(locale: Locale, href: string): Route {
   if (!href || href === "/") {
-    return `/${locale}`;
+    return `/${locale}` as Route;
   }
 
   const normalized = href.startsWith("/") ? href : `/${href}`;
-  return `/${locale}${normalized}`;
+  return `/${locale}${normalized}` as Route;
 }
 
 export function switchLocaleInPath(pathname: string, locale: Locale): string {

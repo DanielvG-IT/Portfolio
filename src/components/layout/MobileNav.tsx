@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import type { Route } from "next";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
@@ -25,7 +26,7 @@ export default function MobileNav({ locale, links }: MobileNavProps) {
   const switchLocale = (nextLocale: Locale) => {
     const target = switchLocaleInPath(pathname, nextLocale);
     setOpen(false);
-    router.push(target);
+    router.push(target as Route);
   };
 
   return (

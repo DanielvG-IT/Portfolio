@@ -1,6 +1,7 @@
 "use client";
 
 import clsx from "clsx";
+import type { Route } from "next";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -41,7 +42,7 @@ export default function Header({ locale, nav }: HeaderProps) {
 
   const switchLocale = (nextLocale: Locale) => {
     const target = switchLocaleInPath(pathname, nextLocale);
-    router.push(target);
+    router.push(target as Route);
   };
 
   return (
