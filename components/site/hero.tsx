@@ -55,12 +55,13 @@ export function Hero({ locale, content, dictionary }: HeroProps) {
       <section className="hero-shell">
         <div className="container mx-auto">
           <div className="hero-grid">
+            {/* Left: Content Column */}
             <div className="hero-copy">
               <div className="signature-label">
                 <p className="eyebrow">{content.eyebrow}</p>
               </div>
 
-              <h1 className="hero-title mt-4">
+              <h1 className="hero-title mt-6 lg:mt-8">
                 {content.titleLines[0]}
                 <br />
                 {content.titleLines[1]}
@@ -70,7 +71,7 @@ export function Hero({ locale, content, dictionary }: HeroProps) {
 
               <p className="hero-intro">{content.intro}</p>
 
-              <div className="mt-9">
+              <div className="mt-9 lg:mt-12">
                 <Button asChild>
                   <Link href={getLocalizedPath(locale, "projects")}>
                     {locale === "nl" ? "Bekijk mijn werk" : "View my work"}
@@ -79,8 +80,14 @@ export function Hero({ locale, content, dictionary }: HeroProps) {
               </div>
             </div>
 
-            <div className="hero-media">
-              <PortraitBlock variant="hero" priority caption="" />
+            {/* Right: Portrait Panel - Anchored Dark Surface */}
+            <div className="hero-portrait-panel">
+              <div className="hero-portrait-panel-frame">
+                <PortraitBlock variant="hero" priority caption="" />
+              </div>
+              <p className="hero-portrait-detail">
+                {locale === "nl" ? "Portfolio 2025" : "Portfolio 2025"}
+              </p>
             </div>
           </div>
         </div>
