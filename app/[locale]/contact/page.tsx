@@ -79,28 +79,31 @@ export default async function ContactPage({
   return (
     <>
       <SectionShell>
-        <SectionIntro {...dictionary.contactPage.intro} />
-        <div className="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
-          <div className="surface-card p-7 md:p-8">
-            <p className="eyebrow">
-              {dictionary.contactPage.availabilityTitle}
-            </p>
-            <p className="mt-4 text-xl font-semibold tracking-[-0.03em]">
-              {dictionary.contactPage.availabilityTitle}
-            </p>
-            <p className="mt-4 text-base leading-8 text-foreground-soft">
-              {dictionary.contactPage.availabilityCopy}
-            </p>
-
-            <div className="mt-8 rounded-[1.6rem] bg-background-muted p-5">
-              <p className="eyebrow">{dictionary.contactPage.bestRouteTitle}</p>
-              <p className="mt-4 text-base leading-7 text-foreground-soft">
-                {dictionary.contactPage.bestRouteCopy}
-              </p>
+        <div className="grid gap-8 xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+          <div className="space-y-8">
+            <SectionIntro {...dictionary.contactPage.intro} className="mb-0" />
+            <div className="space-y-6">
+              <div>
+                <div className="signature-label">
+                  <p className="eyebrow">{dictionary.contactPage.availabilityTitle}</p>
+                </div>
+                <p className="mt-4 text-base leading-8 text-foreground-soft">
+                  {dictionary.contactPage.availabilityCopy}
+                </p>
+              </div>
+              <div>
+                <div className="signature-label">
+                  <p className="eyebrow">{dictionary.contactPage.bestRouteTitle}</p>
+                </div>
+                <p className="mt-4 text-base leading-8 text-foreground-soft">
+                  {dictionary.contactPage.bestRouteCopy}
+                </p>
+              </div>
             </div>
           </div>
 
-          <div className="grid gap-5">
+          <div className="surface-card px-6 py-2 md:px-8">
+            <div className="detail-list">
             {methods.map((method) => {
               const Icon = method.icon;
 
@@ -108,38 +111,41 @@ export default async function ContactPage({
                 <Link
                   key={method.label}
                   href={method.href}
-                  target={
-                    method.label === "Location"
-                      ? "_blank"
-                      : method.href.startsWith("mailto:")
-                        ? undefined
-                        : "_blank"
-                  }
+                  target={method.href.startsWith("mailto:") ? undefined : "_blank"}
                   rel={
                     method.href.startsWith("mailto:") ? undefined : "noreferrer"
                   }
-                  className="surface-card flex items-start gap-4 p-6 transition-transform hover:-translate-y-0.5">
-                  <div className="rounded-full bg-background-muted p-3 text-accent">
+                  className="detail-row group">
+                  <div className="flex items-start gap-4">
+                  <div className="rounded-full border border-border bg-background-muted p-3 text-accent transition-colors group-hover:border-border-strong">
                     <Icon className="h-5 w-5" />
                   </div>
                   <div>
-                    <p className="eyebrow">{method.label}</p>
-                    <p className="mt-3 text-lg font-medium">{method.value}</p>
+                    <div className="signature-label">
+                      <p className="eyebrow">{method.label}</p>
+                    </div>
+                    <p className="mt-3 text-lg font-medium tracking-[-0.02em]">
+                      {method.value}
+                    </p>
                     <p className="mt-3 text-sm leading-6 text-foreground-soft">
                       {method.note}
                     </p>
                   </div>
+                  </div>
                 </Link>
               );
             })}
+            </div>
           </div>
         </div>
       </SectionShell>
 
-      <SectionShell>
-        <div className="surface-card grid gap-8 p-8 md:p-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+      <SectionShell className="pt-0">
+        <div className="grid gap-8 border-t border-border pt-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
           <div>
-            <p className="eyebrow">{dictionary.home.contact.eyebrow}</p>
+            <div className="signature-label">
+              <p className="eyebrow">{dictionary.home.contact.eyebrow}</p>
+            </div>
             <h2 className="section-title mt-4">
               {dictionary.home.contact.title}
             </h2>

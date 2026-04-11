@@ -46,25 +46,37 @@ export default async function JourneyPage({
   return (
     <>
       <SectionShell>
-        <SectionIntro {...dictionary.journeyPage.intro} />
-        <Timeline items={timeline} />
+        <div className="grid gap-8 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+          <SectionIntro {...dictionary.journeyPage.intro} className="mb-0" />
+          <div className="journey-flow">
+            {dictionary.journeyPage.transitionPoints.map((point, index) => (
+              <div key={point.title} className="journey-flow-step">
+                <p className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-foreground-muted">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                <h2 className="mt-4 text-[1.3rem] font-semibold tracking-[-0.03em]">
+                  {point.title}
+                </h2>
+                <p className="mt-3 text-sm leading-6 text-foreground-soft">
+                  {point.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
       </SectionShell>
 
       <SectionShell className="pt-0">
-        <SectionIntro
-          eyebrow={dictionary.journeyPage.transitionTitle}
-          title={dictionary.journeyPage.transitionTitle}
-          description={dictionary.journeyPage.transitionDescription}
-        />
-        <div className="grid gap-5 lg:grid-cols-3">
-          {dictionary.journeyPage.transitionPoints.map((point) => (
-            <article key={point.title} className="surface-card p-6 md:p-7">
-              <h2 className="text-2xl font-semibold tracking-[-0.03em]">{point.title}</h2>
-              <p className="mt-4 text-base leading-7 text-foreground-soft">
-                {point.description}
-              </p>
-            </article>
-          ))}
+        <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_18rem] xl:items-start">
+          <Timeline items={timeline} />
+          <div className="surface-card p-6">
+            <div className="signature-label">
+              <p className="eyebrow">{dictionary.journeyPage.transitionTitle}</p>
+            </div>
+            <p className="mt-4 text-sm leading-7 text-foreground-soft">
+              {dictionary.journeyPage.transitionDescription}
+            </p>
+          </div>
         </div>
       </SectionShell>
 

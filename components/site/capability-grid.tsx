@@ -23,7 +23,9 @@ export function CapabilityGrid({ locale, items }: CapabilityGridProps) {
     <div className="grid gap-5 lg:grid-cols-3">
       {items.map((item) => (
         <article key={item.title} className="surface-card flex h-full flex-col p-6 md:p-7">
-          <p className="eyebrow">{capabilityStateLabels[locale][item.state]}</p>
+          <div className="signature-label">
+            <p className="eyebrow">{capabilityStateLabels[locale][item.state]}</p>
+          </div>
           <h3 className="mt-4 text-[1.7rem] font-semibold tracking-[-0.04em]">
             {item.title}
           </h3>
@@ -31,11 +33,11 @@ export function CapabilityGrid({ locale, items }: CapabilityGridProps) {
           <p className="keyline-note mt-5 px-4 py-4 text-sm leading-6 text-foreground-soft">
             {item.evidence}
           </p>
-          <ul className="mt-6 flex flex-wrap gap-2">
+          <ul className="detail-list mt-6">
             {item.items.map((tag) => (
               <li
                 key={tag}
-                className="rounded-[0.95rem] border border-border bg-background-muted px-3 py-2 text-xs font-medium text-foreground-soft">
+                className="detail-row text-sm leading-6 text-foreground-soft">
                 {tag}
               </li>
             ))}

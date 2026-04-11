@@ -6,6 +6,7 @@ import type { Locale, SiteDictionary } from "@/types/site";
 import { LocaleSwitcher } from "./locale-switcher";
 import { MobileNav } from "./mobile-nav";
 import { ThemeToggle } from "./theme-toggle";
+import { HeaderNav } from "./header-nav";
 
 interface SiteHeaderProps {
   locale: Locale;
@@ -27,22 +28,15 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
           </Link>
 
           <nav className="hidden items-center justify-center gap-7 xl:flex">
-            {dictionary.nav.items.map((item) => (
-              <Link
-                key={item.key}
-                href={getLocalizedPath(locale, item.key)}
-                className="header-nav-link">
-                {item.label}
-              </Link>
-            ))}
+            <HeaderNav locale={locale} dictionary={dictionary} />
           </nav>
 
-          <div className="hidden items-center gap-5 xl:flex">
+          <div className="hidden items-center gap-4 xl:flex">
             <LocaleSwitcher locale={locale} ariaLabel={dictionary.nav.languageToggle} />
             <ThemeToggle ariaLabel={dictionary.nav.themeToggle} locale={locale} />
             <Link
               href={getLocalizedPath(locale, "resume")}
-              className="inline-flex items-center text-sm font-medium text-foreground transition-colors hover:text-accent">
+              className="header-resume-link">
               {dictionary.nav.resumeCta}
             </Link>
           </div>

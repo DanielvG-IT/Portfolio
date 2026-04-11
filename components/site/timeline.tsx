@@ -6,31 +6,36 @@ interface TimelineProps {
 
 export function Timeline({ items }: TimelineProps) {
   return (
-    <div className="relative pl-7 md:pl-9">
-      <div className="absolute bottom-0 left-[12px] top-0 w-px bg-border md:left-[16px]" />
-      <div className="space-y-8">
-        {items.map((item) => (
-          <article key={`${item.period}-${item.title}`} className="relative surface-card p-6 md:p-7">
-            <span className="absolute left-[-21px] top-8 h-3.5 w-3.5 rounded-full border-[3px] border-background bg-accent md:left-[-27px]" />
-            <p className="eyebrow">{item.period}</p>
-            <h3 className="mt-3 text-[1.8rem] font-semibold tracking-[-0.04em]">
+    <div className="space-y-9">
+      {items.map((item, index) => (
+        <article
+          key={`${item.period}-${item.title}`}
+          className="grid gap-4 lg:grid-cols-[8rem_minmax(0,1fr)] lg:gap-8">
+          <div className="flex items-start gap-4 lg:flex-col lg:gap-3">
+            <div className="meta-chip">{item.period}</div>
+            <div className="font-mono text-[0.7rem] uppercase tracking-[0.24em] text-foreground-muted">
+              {String(index + 1).padStart(2, "0")}
+            </div>
+          </div>
+
+          <div className="surface-card p-6 md:p-7">
+            <div className="signature-label">
+              <p className="eyebrow">{item.organization}</p>
+            </div>
+            <h3 className="mt-4 text-[1.8rem] font-semibold tracking-[-0.04em]">
               {item.title}
             </h3>
-            <p className="mt-2 text-sm font-medium text-foreground-soft">
-              {item.organization}
-            </p>
             <p className="mt-4 text-base leading-7 text-foreground-soft">{item.summary}</p>
-            <ul className="mt-5 space-y-3 text-sm leading-6 text-foreground-soft">
+            <ul className="detail-list mt-6">
               {item.bullets.map((bullet) => (
-                <li key={bullet} className="flex gap-3">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent" />
-                  <span>{bullet}</span>
+                <li key={bullet} className="detail-row text-sm leading-6 text-foreground-soft">
+                  {bullet}
                 </li>
               ))}
             </ul>
-          </article>
-        ))}
-      </div>
+          </div>
+        </article>
+      ))}
     </div>
   );
 }

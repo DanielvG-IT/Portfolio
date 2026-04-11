@@ -1,14 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { headers } from "next/headers";
 import { Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import type { ReactNode } from "react";
 
+import { DocumentLocaleSync } from "@/components/providers/document-locale-sync";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import {
   defaultLocale,
   getAlternateLanguageUrls,
   getMetadataImageUrl,
-  isLocale,
   localeMetadata,
   metadataImage,
   personName,
@@ -109,12 +108,10 @@ export default async function RootLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
-  const headerStore = await headers();
-  const localeHeader = headerStore.get("x-locale");
-  const locale = isLocale(localeHeader) ? localeHeader : defaultLocale;
-
   return (
-    <html lang={localeMetadata[locale].htmlLang} suppressHydrationWarning>
+    <html
+      lang={localeMetadata[defaultLocale].htmlLang}
+      suppressHydrationWarning>
       <body
         className={`${instrumentSans.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         <ThemeProvider
@@ -122,6 +119,7 @@ export default async function RootLayout({
           defaultTheme="dark"
           enableSystem
           disableTransitionOnChange>
+          <DocumentLocaleSync />
           {children}
         </ThemeProvider>
       </body>

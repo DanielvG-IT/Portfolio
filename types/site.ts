@@ -15,6 +15,7 @@ export type CapabilityState = "workingWith" | "foundationIn" | "deepening";
 export interface HeroContent {
   eyebrow: string;
   title: string;
+  titleLines: string[];
   alternatives: string[];
   intro: string;
   detailLines: string[];

@@ -20,44 +20,50 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
         <div className="site-frame px-6 py-8 md:px-8 md:py-10">
           <div className="grid gap-10 md:grid-cols-[1.45fr_0.85fr_0.85fr]">
             <div className="space-y-4">
-              <p className="eyebrow">Daniël van Ginneken</p>
+              <div className="signature-label">
+                <p className="eyebrow">Daniël van Ginneken</p>
+              </div>
               <p className="max-w-md text-base leading-7 text-foreground-soft">
                 {dictionary.footer.statement}
               </p>
-              <p className="font-mono text-xs uppercase tracking-[0.18em] text-foreground-soft">
+              <p className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-foreground-soft">
                 {dictionary.footer.location}
               </p>
             </div>
 
             <div className="space-y-3">
-              <p className="eyebrow">{navigationLabel}</p>
-              <div className="flex flex-col gap-3 text-sm text-foreground-soft">
+              <div className="signature-label">
+                <p className="eyebrow">{navigationLabel}</p>
+              </div>
+              <div className="flex flex-col gap-3 pt-2 text-sm text-foreground-soft">
                 {dictionary.nav.items.map((item) => (
                   <Link
                     key={item.key}
                     href={getLocalizedPath(locale, item.key)}
-                    className="transition-colors hover:text-foreground">
+                    className="action-link w-fit !text-[0.68rem] !tracking-[0.2em]">
                     {item.label}
                   </Link>
                 ))}
                 <Link
                   href={getLocalizedPath(locale, "resume")}
-                  className="transition-colors hover:text-foreground">
+                  className="action-link w-fit !text-[0.68rem] !tracking-[0.2em]">
                   {dictionary.nav.resumeCta}
                 </Link>
               </div>
             </div>
 
             <div className="space-y-3">
-              <p className="eyebrow">{linksLabel}</p>
-              <div className="flex flex-col gap-3 text-sm text-foreground-soft">
+              <div className="signature-label">
+                <p className="eyebrow">{linksLabel}</p>
+              </div>
+              <div className="flex flex-col gap-3 pt-2 text-sm text-foreground-soft">
                 {socialLinks.map((item) => (
                   <Link
                     key={item.label}
                     href={item.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="transition-colors hover:text-foreground">
+                    className="action-link w-fit !text-[0.68rem] !tracking-[0.2em]">
                     {item.label}
                   </Link>
                 ))}

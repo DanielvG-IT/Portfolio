@@ -20,7 +20,9 @@ export function Hero({ locale, content, dictionary, trustStrip }: HeroProps) {
       <div className="hero-stage">
         <div className="hero-copy fade-up">
           <div className="hero-kicker-row">
-            <p className="eyebrow">{content.eyebrow}</p>
+            <span className="signature-label">
+              <p className="eyebrow">{content.eyebrow}</p>
+            </span>
             <span className="hero-kicker-meta">
               {locale === "nl"
                 ? "Nederland • 19 • student software development"
@@ -28,7 +30,15 @@ export function Hero({ locale, content, dictionary, trustStrip }: HeroProps) {
             </span>
           </div>
 
-          <h1 className="hero-title font-semibold">{content.title}</h1>
+          <h1 className="hero-title font-semibold">
+            {content.titleLines.map((line, index) => (
+              <span
+                key={line}
+                className={`hero-title-line ${index === 1 ? "hero-title-line-offset" : ""}`}>
+                {line}
+              </span>
+            ))}
+          </h1>
           <p className="hero-intro">{content.intro}</p>
 
           <div className="hero-cta-row">
@@ -67,11 +77,13 @@ export function Hero({ locale, content, dictionary, trustStrip }: HeroProps) {
         </div>
 
         <div className="hero-visual">
-          <div className="hero-module order-2 p-5 xl:absolute xl:left-0 xl:top-10 xl:w-[18.5rem]">
-            <p className="eyebrow">
-              {locale === "nl" ? "Hoofdrichting" : "Primary direction"}
-            </p>
-            <p className="hero-module-title mt-4">
+          <div className="hero-module order-2 p-5 xl:absolute xl:left-0 xl:top-10 xl:w-[18rem]">
+            <div className="signature-label">
+              <p className="eyebrow">
+                {locale === "nl" ? "Hoofdrichting" : "Primary direction"}
+              </p>
+            </div>
+            <p className="hero-module-title mt-5">
               {locale === "nl"
                 ? "Software eerst, met technische diepte erachter."
                 : "Software first, with technical depth behind it."}
@@ -95,11 +107,13 @@ export function Hero({ locale, content, dictionary, trustStrip }: HeroProps) {
             />
           </div>
 
-          <div className="hero-module order-3 p-5 xl:absolute xl:bottom-9 xl:left-0 xl:mt-0 xl:w-[20.5rem]">
-            <p className="eyebrow">
-              {locale === "nl" ? "Fundament" : "Roots"}
-            </p>
-            <p className="hero-module-title mt-4">
+          <div className="hero-module order-3 p-5 xl:absolute xl:bottom-9 xl:left-0 xl:mt-0 xl:w-[21rem]">
+            <div className="signature-label">
+              <p className="eyebrow">
+                {locale === "nl" ? "Fundament" : "Roots"}
+              </p>
+            </div>
+            <p className="hero-module-title mt-5">
               {locale === "nl"
                 ? "Troubleshooting, Linux en netwerken als basis."
                 : "Troubleshooting, Linux, and networking as a base."}

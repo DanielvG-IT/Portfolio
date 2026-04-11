@@ -57,19 +57,56 @@ export default async function ResumePage({
   return (
     <>
       <SectionShell>
-        <SectionIntro {...dictionary.resumePage.intro} />
-        <div className="surface-card grid gap-8 p-8 md:p-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+        <div className="grid gap-8 xl:grid-cols-[minmax(0,0.95fr)_20rem] xl:items-end">
+          <SectionIntro {...dictionary.resumePage.intro} className="mb-0" />
+          <div className="surface-card p-5">
+            <div className="signature-label">
+              <p className="eyebrow">{localeParam === "nl" ? "Profiel" : "Profile"}</p>
+            </div>
+            <p className="mt-4 text-sm leading-7 text-foreground-soft">
+              {localeParam === "nl"
+                ? "Een compacte, evidence-first samenvatting van de huidige richting, ervaring en technische basis."
+                : "A compact, evidence-first overview of the current direction, experience, and technical base."}
+            </p>
+          </div>
+        </div>
+
+        <div className="surface-card mt-8 grid gap-8 p-8 md:p-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
           <div>
             <p className="text-base leading-8 text-foreground-soft">
               {dictionary.resumePage.summary}
             </p>
           </div>
-          <div className="lg:justify-self-end">
-            <Button asChild size="lg">
-              <Link href={resumeFile(localeParam)} download>
-                {dictionary.common.downloadResume}
-              </Link>
-            </Button>
+          <div className="space-y-5 lg:justify-self-end">
+            <div className="detail-list">
+              <div className="detail-row">
+                <span className="detail-row-label">
+                  {localeParam === "nl" ? "Richting" : "Direction"}
+                </span>
+                <span className="text-sm leading-7 text-foreground-soft">
+                  {localeParam === "nl"
+                    ? "Softwareontwikkeling, ondersteund door infrastructuur- en supportervaring."
+                    : "Software development, backed by infrastructure and support experience."}
+                </span>
+              </div>
+              <div className="detail-row">
+                <span className="detail-row-label">
+                  {localeParam === "nl" ? "Focus nu" : "Current focus"}
+                </span>
+                <span className="text-sm leading-7 text-foreground-soft">
+                  {localeParam === "nl"
+                    ? "Dieper bouwen in moderne webontwikkeling, architectuurdenken en technische communicatie."
+                    : "Building deeper in modern web development, architecture thinking, and technical communication."}
+                </span>
+              </div>
+            </div>
+            <div>
+              <Button asChild size="lg">
+                <Link href={resumeFile(localeParam)} download>
+                  {dictionary.common.downloadResume}
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </SectionShell>
@@ -84,28 +121,35 @@ export default async function ResumePage({
       </SectionShell>
 
       <SectionShell className="pt-0">
-        <SectionIntro
-          eyebrow={dictionary.resumePage.educationTitle}
-          title={dictionary.resumePage.educationTitle}
-          description={dictionary.resumePage.summary}
-        />
-        <div className="grid gap-5 lg:grid-cols-2">
-          {education.map((entry) => (
-            <article
-              key={`${entry.period}-${entry.title}`}
-              className="surface-card p-6 md:p-7">
-              <p className="eyebrow">{entry.period}</p>
-              <h2 className="mt-4 text-2xl font-semibold tracking-[-0.03em]">
-                {entry.title}
-              </h2>
-              <p className="mt-2 text-sm font-medium text-foreground-soft">
-                {entry.organization}
-              </p>
-              <p className="mt-4 text-base leading-7 text-foreground-soft">
-                {entry.summary}
-              </p>
-            </article>
-          ))}
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <SectionIntro
+            eyebrow={dictionary.resumePage.educationTitle}
+            title={dictionary.resumePage.educationTitle}
+            description={dictionary.resumePage.summary}
+            className="mb-0"
+          />
+          <div className="surface-card px-6 py-2 md:px-8">
+            <div className="detail-list">
+              {education.map((entry) => (
+                <article
+                  key={`${entry.period}-${entry.title}`}
+                  className="detail-row md:grid-cols-[9rem_1fr] md:gap-6">
+                  <span className="meta-chip w-fit">{entry.period}</span>
+                  <div>
+                    <div className="signature-label">
+                      <p className="eyebrow">{entry.organization}</p>
+                    </div>
+                    <h2 className="mt-4 text-[1.35rem] font-semibold tracking-[-0.03em]">
+                      {entry.title}
+                    </h2>
+                    <p className="mt-3 text-base leading-7 text-foreground-soft">
+                      {entry.summary}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
         </div>
       </SectionShell>
 
@@ -119,19 +163,24 @@ export default async function ResumePage({
       </SectionShell>
 
       <SectionShell>
-        <SectionIntro
-          eyebrow={dictionary.resumePage.toolsTitle}
-          title={dictionary.resumePage.toolsTitle}
-          description={dictionary.resumePage.summary}
-        />
-        <div className="surface-card flex flex-wrap gap-3 p-6 md:p-7">
-          {tools.map((tool) => (
-            <span
-              key={tool}
-              className="rounded-full border border-border bg-background-muted px-4 py-3 text-sm text-foreground-soft">
-              {tool}
-            </span>
-          ))}
+        <div className="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+          <SectionIntro
+            eyebrow={dictionary.resumePage.toolsTitle}
+            title={dictionary.resumePage.toolsTitle}
+            description={dictionary.resumePage.summary}
+            className="mb-0"
+          />
+          <div className="surface-card px-6 py-2 md:px-8">
+            <div className="detail-list sm:grid sm:grid-cols-2 sm:gap-x-6 sm:[&>*:nth-child(-n+2)]:border-t-0">
+              {tools.map((tool) => (
+                <div key={tool} className="detail-row">
+                  <span className="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-foreground-soft">
+                    {tool}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </SectionShell>
     </>

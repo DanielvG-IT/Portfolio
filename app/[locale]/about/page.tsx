@@ -46,46 +46,90 @@ export default async function AboutPage({
   return (
     <>
       <SectionShell>
-        <SectionIntro {...dictionary.about.intro} />
-        <div className="grid gap-6 xl:grid-cols-[minmax(0,1.1fr)_420px]">
-          <div className="surface-card space-y-6 p-7 md:p-8">
-            {dictionary.about.narrative.map((paragraph) => (
-              <p key={paragraph} className="text-base leading-8 text-foreground-soft">
-                {paragraph}
-              </p>
-            ))}
+        <div className="grid gap-8 xl:grid-cols-[minmax(0,1.08fr)_420px]">
+          <div className="space-y-8">
+            <SectionIntro {...dictionary.about.intro} className="mb-0" />
+            <div className="surface-card p-7 md:p-8">
+              <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+                <p className="text-[1.28rem] leading-[1.9] tracking-[-0.02em] text-foreground">
+                  {dictionary.about.narrative[0]}
+                </p>
+                <div className="detail-list">
+                  {dictionary.about.narrative.slice(1).map((paragraph) => (
+                    <p
+                      key={paragraph}
+                      className="detail-row text-base leading-8 text-foreground-soft">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
-          <PortraitBlock caption={dictionary.about.portraitNote} />
+          <div className="space-y-4">
+            <PortraitBlock caption={dictionary.about.portraitNote} />
+            <div className="surface-card p-5">
+              <div className="signature-label">
+                <p className="eyebrow">
+                  {localeParam === "nl" ? "Werkhouding" : "Working style"}
+                </p>
+              </div>
+              <p className="mt-4 text-sm leading-7 text-foreground-soft">
+                {localeParam === "nl"
+                  ? "Rustig, systematisch en gericht op werk dat op lange termijn standhoudt."
+                  : "Calm, systematic, and oriented toward work that holds up over time."}
+              </p>
+            </div>
+          </div>
         </div>
       </SectionShell>
 
       <SectionShell className="pt-0">
-        <div className="grid gap-5 lg:grid-cols-3">
-          {dictionary.about.principles.map((principle) => (
-            <article key={principle.title} className="surface-card p-6 md:p-7">
+        <div className="grid gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-start">
+          <div>
+            <div className="signature-label">
               <p className="eyebrow">{dictionary.about.principlesLabel}</p>
-              <h2 className="mt-4 text-2xl font-semibold tracking-[-0.03em]">
-                {principle.title}
-              </h2>
-              <p className="mt-4 text-base leading-7 text-foreground-soft">
-                {principle.description}
-              </p>
-            </article>
-          ))}
+            </div>
+            <h2 className="section-title mt-4">
+              {localeParam === "nl"
+                ? "De onderliggende standaarden achter het werk."
+                : "The standards behind the work."}
+            </h2>
+          </div>
+          <div className="surface-card px-6 py-2 md:px-8">
+            <div className="detail-list">
+              {dictionary.about.principles.map((principle, index) => (
+                <div key={principle.title} className="detail-row md:grid-cols-[3rem_1fr] md:gap-6">
+                  <span className="font-mono text-[0.72rem] uppercase tracking-[0.24em] text-foreground-muted">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <div>
+                    <h2 className="text-[1.35rem] font-semibold tracking-[-0.03em]">
+                      {principle.title}
+                    </h2>
+                    <p className="mt-3 text-base leading-7 text-foreground-soft">
+                      {principle.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </SectionShell>
 
       <SectionShell className="pt-0">
         <div className="surface-card grid gap-8 p-8 md:p-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div>
-            <p className="eyebrow">{dictionary.about.currentFocus.title}</p>
+            <div className="signature-label">
+              <p className="eyebrow">{dictionary.about.currentFocus.title}</p>
+            </div>
             <h2 className="section-title mt-4">{dictionary.about.currentFocus.title}</h2>
             <p className="section-copy mt-5">{dictionary.about.currentFocus.description}</p>
           </div>
-          <ul className="space-y-4 text-base leading-7 text-foreground-soft">
+          <ul className="detail-list">
             {dictionary.about.currentFocus.items.map((item) => (
-              <li key={item} className="flex gap-3 rounded-[1.4rem] bg-background-muted px-4 py-4">
-                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent" />
+              <li key={item} className="detail-row text-base leading-7 text-foreground-soft">
                 <span>{item}</span>
               </li>
             ))}
