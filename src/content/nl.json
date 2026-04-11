@@ -1,0 +1,152 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "Over",
+    "projects": "Projecten",
+    "journey": "Pad",
+    "contact": "Contact",
+    "cv": "CV"
+  },
+  "home": {
+    "eyebrow": "Software developer met infrastructuurroots",
+    "headline": ["Software gebouwd", "op sterke", "fundamenten."],
+    "body": "Ik ben Daniël van Ginneken, een 19-jarige student software development uit Nederland. Mijn achtergrond in system support en infrastructuur gaf me een praktische technische basis. Nu ga ik bewust dieper richting software engineering.",
+    "cta": "Bekijk mijn werk",
+    "anchors": [
+      {
+        "label": "Software focus",
+        "title": "Bouwen staat centraal",
+        "body": "Van idee naar werkende applicatie: ik bouw met aandacht voor structuur, leesbaarheid en onderhoudbaarheid."
+      },
+      {
+        "label": "Infrastructuurroots",
+        "title": "Grond in systemen",
+        "body": "Door eerdere IT-rollen denk ik automatisch mee over stabiliteit, deployment en hoe software draait in productie."
+      },
+      {
+        "label": "Nu",
+        "title": "Student en aan het bouwen",
+        "body": "Ik ontwikkel projecten die mijn groei laten zien: helder van scope, sterk in basis en scherp in uitvoering."
+      }
+    ],
+    "featuredProject": {
+      "category": "Geselecteerde build",
+      "name": "Portfolio v2",
+      "description": "Een tweetalige portfolio-ervaring met een glasgebaseerd surface-systeem en editorial ritme.",
+      "linkLabel": "Bekijk projecten"
+    }
+  },
+  "about": {
+    "eyebrow": "Over mij",
+    "headline": "Technische basis, software als richting.",
+    "paragraphs": [
+      "Mijn eerste professionele stappen lagen in support en infrastructuur. Daar leerde ik systemen begrijpen zoals ze echt gebruikt worden: onder druk, met afhankelijkheden en met mensen die direct door kleine fouten worden geraakt. Dat perspectief neem ik mee in alles wat ik bouw.",
+      "Tijdens mijn studie software development verschoof mijn focus van reactief oplossen naar proactief ontwerpen. Ik werk graag aan oplossingen die niet alleen functioneel zijn, maar ook logisch aanvoelen voor toekomstige developers. Goede software is voor mij duidelijk, navolgbaar en rustig in gebruik.",
+      "Ik wil doorgroeien naar een rol waarin ik software-engineering en productdenken combineer. Niet alleen features maken, maar keuzes onderbouwen: waarom deze architectuur, waarom deze trade-off, waarom dit nu de juiste stap is. Dat maakt bouwen duurzaam en professioneel."
+    ],
+    "takeawaysTitle": "Wat ik meeneem",
+    "takeaways": [
+      {
+        "title": "Systeemdenken",
+        "body": "Ik kijk verder dan de codefile en neem infrastructuur, betrouwbaarheid en impact op eindgebruikers direct mee."
+      },
+      {
+        "title": "Heldere uitvoering",
+        "body": "Ik werk gestructureerd, communiceer keuzes vroeg en lever liever minder op dat stevig staat dan veel zonder fundament."
+      },
+      {
+        "title": "Lerende houding",
+        "body": "Ik maak voortgang zichtbaar, vraag gericht feedback en gebruik die om zowel technische kwaliteit als tempo te verhogen."
+      }
+    ],
+    "photoNote": "Fotografiemoment, 2024."
+  },
+  "projects": {
+    "headline": "Projecten met focus op kwaliteit.",
+    "description": "Selecties van recente builds en concepten die momenteel verder worden uitgewerkt.",
+    "selectedLabel": "Geselecteerde builds",
+    "inDevelopmentLabel": "In ontwikkeling",
+    "selected": [
+      {
+        "name": "Portfolio v2",
+        "category": "Frontend engineering",
+        "year": "2026",
+        "href": "https://github.com/DanielvG-IT/Portfolio",
+        "linkLabel": "Repository"
+      },
+      {
+        "name": "Support Workflow Toolkit",
+        "category": "Automation",
+        "year": "2025",
+        "href": "https://github.com",
+        "linkLabel": "Overzicht"
+      }
+    ],
+    "inDevelopment": [
+      {
+        "name": "Infra Notes OS",
+        "category": "Knowledge system",
+        "year": "2026",
+        "href": "",
+        "linkLabel": ""
+      }
+    ],
+    "placeholder": {
+      "name": "Projectinformatie volgt",
+      "category": "In opbouw",
+      "year": "Binnenkort",
+      "description": "Nieuwe projecten worden hier als compacte rows toegevoegd zodra ze publicatieklaar zijn."
+    }
+  },
+  "journey": {
+    "eyebrow": "Pad",
+    "headline": "Van support naar software engineering.",
+    "intro": "Mijn route loopt van operationele IT naar doelgerichte softwarebouw. Elke stap heeft mijn manier van ontwerpen en bouwen scherper gemaakt.",
+    "band": [
+      {
+        "label": "Start",
+        "title": "IT support en beheer",
+        "body": "Praktische basis in incidenten, systemen en verantwoordelijkheid."
+      },
+      {
+        "label": "Focus",
+        "title": "Software development studie",
+        "body": "Bewuste verschuiving naar bouwen, modelleren en itereren."
+      },
+      {
+        "label": "Richting",
+        "title": "Engineering met fundament",
+        "body": "Kwaliteit, helderheid en duurzame keuzes als standaard."
+      }
+    ],
+    "entries": [
+      {
+        "year": "2023",
+        "title": "Eerste stap in IT-support",
+        "description": "Ik werkte aan supportvragen, basisbeheer en gebruikersproblemen. Hierdoor leerde ik patronen herkennen in systemen die misgaan en werd ik sterk in gestructureerd troubleshooten.",
+        "relevance": "Relevant omdat: ik daar leerde hoe cruciaal stabiliteit en duidelijke documentatie zijn."
+      },
+      {
+        "year": "2024",
+        "title": "Verschuiving naar software development",
+        "description": "Tijdens mijn opleiding verschoof mijn interesse van operationeel oplossen naar ontwerpen en bouwen. Ik begon eigen projecten te maken en keuzes expliciet te onderbouwen.",
+        "relevance": "Relevant omdat: deze stap mijn technische basis koppelde aan productgericht denken."
+      },
+      {
+        "year": "2025-2026",
+        "title": "Portfolio en gerichte builds",
+        "description": "Ik bouw nu aan projecten met duidelijke scope, consistente structuur en aandacht voor onderhoudbaarheid. Niet alleen om te tonen wat ik kan, maar ook hoe ik werk.",
+        "relevance": "Relevant omdat: ik hiermee een solide fundament leg voor een professionele software engineering rol."
+      }
+    ]
+  },
+  "contact": {
+    "intro": "Open voor stages, junior kansen en samenwerkingen waar softwarekwaliteit en eigenaarschap centraal staan.",
+    "email": "daniel@example.com",
+    "links": {
+      "linkedin": "https://www.linkedin.com",
+      "github": "https://github.com/DanielvG-IT"
+    },
+    "availability": "Beschikbaar voor gesprekken vanaf Q2 2026."
+  }
+}

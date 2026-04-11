@@ -1,0 +1,152 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "journey": "Journey",
+    "contact": "Contact",
+    "cv": "CV"
+  },
+  "home": {
+    "eyebrow": "Software developer with infrastructure roots",
+    "headline": ["Software built", "on strong", "foundations."],
+    "body": "I am Daniël van Ginneken, a 19-year-old software development student from the Netherlands. My background in system support and infrastructure gave me a practical technical base. Now I am intentionally moving deeper into software engineering.",
+    "cta": "View my work",
+    "anchors": [
+      {
+        "label": "Software focus",
+        "title": "Building comes first",
+        "body": "From idea to working product: I build with structure, readability, and maintainability in mind."
+      },
+      {
+        "label": "Infrastructure roots",
+        "title": "Grounded in systems",
+        "body": "My earlier IT roles make me think naturally about stability, deployment, and how software behaves in production."
+      },
+      {
+        "label": "Now",
+        "title": "Student and actively building",
+        "body": "I am developing projects that show growth: clear in scope, strong in fundamentals, and focused in execution."
+      }
+    ],
+    "featuredProject": {
+      "category": "Featured build",
+      "name": "Portfolio v2",
+      "description": "A bilingual portfolio experience using a glass-based surface system and editorial pacing.",
+      "linkLabel": "See projects"
+    }
+  },
+  "about": {
+    "eyebrow": "About",
+    "headline": "Technical foundation, software as direction.",
+    "paragraphs": [
+      "My first professional steps were in support and infrastructure. That environment taught me how systems are actually used: under pressure, across dependencies, and by people affected immediately by small failures. I carry that perspective into everything I build.",
+      "During my software development studies, my focus shifted from reactive fixes to proactive design. I enjoy building solutions that are not only functional but also logical for future developers. To me, good software is clear, traceable, and calm in daily use.",
+      "I want to grow into a role where software engineering and product thinking come together. Not just shipping features, but explaining choices: why this architecture, why this trade-off, why this step now. That is how building becomes durable and professional."
+    ],
+    "takeawaysTitle": "What I bring",
+    "takeaways": [
+      {
+        "title": "Systems thinking",
+        "body": "I look beyond the code file and factor in infrastructure, reliability, and end-user impact from the start."
+      },
+      {
+        "title": "Clear execution",
+        "body": "I work in a structured way, communicate decisions early, and prefer fewer outputs that are solid over many without a foundation."
+      },
+      {
+        "title": "Learning mindset",
+        "body": "I make progress visible, ask for targeted feedback, and use it to raise both technical quality and delivery pace."
+      }
+    ],
+    "photoNote": "Photography moment, 2024."
+  },
+  "projects": {
+    "headline": "Projects with quality in focus.",
+    "description": "Selections of recent builds and concepts currently being expanded.",
+    "selectedLabel": "Selected builds",
+    "inDevelopmentLabel": "In development",
+    "selected": [
+      {
+        "name": "Portfolio v2",
+        "category": "Frontend engineering",
+        "year": "2026",
+        "href": "https://github.com/DanielvG-IT/Portfolio",
+        "linkLabel": "Repository"
+      },
+      {
+        "name": "Support Workflow Toolkit",
+        "category": "Automation",
+        "year": "2025",
+        "href": "https://github.com",
+        "linkLabel": "Overview"
+      }
+    ],
+    "inDevelopment": [
+      {
+        "name": "Infra Notes OS",
+        "category": "Knowledge system",
+        "year": "2026",
+        "href": "",
+        "linkLabel": ""
+      }
+    ],
+    "placeholder": {
+      "name": "Project details incoming",
+      "category": "In progress",
+      "year": "Soon",
+      "description": "New projects will appear here as structured rows once they are ready for publication."
+    }
+  },
+  "journey": {
+    "eyebrow": "Journey",
+    "headline": "From support toward software engineering.",
+    "intro": "My path moves from operational IT into focused software delivery. Each step has sharpened how I design and build.",
+    "band": [
+      {
+        "label": "Start",
+        "title": "IT support and operations",
+        "body": "Practical grounding in incidents, systems, and ownership."
+      },
+      {
+        "label": "Focus",
+        "title": "Software development studies",
+        "body": "A deliberate shift toward building, modeling, and iterating."
+      },
+      {
+        "label": "Direction",
+        "title": "Engineering with foundations",
+        "body": "Quality, clarity, and durable decisions as a baseline."
+      }
+    ],
+    "entries": [
+      {
+        "year": "2023",
+        "title": "First step in IT support",
+        "description": "I worked on support requests, basic administration, and user problems. This taught me to recognize failure patterns in systems and become disciplined in structured troubleshooting.",
+        "relevance": "Relevant because: this is where I learned how essential stability and clear documentation are."
+      },
+      {
+        "year": "2024",
+        "title": "Shift toward software development",
+        "description": "During my studies, my interest moved from operational fixes to design and implementation. I started building personal projects and making technical choices explicit.",
+        "relevance": "Relevant because: this step connected my technical base with product-oriented thinking."
+      },
+      {
+        "year": "2025-2026",
+        "title": "Portfolio and focused builds",
+        "description": "I now build projects with clear scope, consistent structure, and attention to maintainability. Not only to show what I can build, but also how I work.",
+        "relevance": "Relevant because: it forms a strong foundation for a professional software engineering role."
+      }
+    ]
+  },
+  "contact": {
+    "intro": "Open to internships, junior opportunities, and collaborations where software quality and ownership matter.",
+    "email": "daniel@example.com",
+    "links": {
+      "linkedin": "https://www.linkedin.com",
+      "github": "https://github.com/DanielvG-IT"
+    },
+    "availability": "Available for conversations from Q2 2026."
+  }
+}
