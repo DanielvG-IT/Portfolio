@@ -66,20 +66,8 @@ export default async function HomePage({
         locale={localeParam}
         content={dictionary.home.hero}
         dictionary={dictionary}
-        portraitCaption={dictionary.about.portraitNote}
+        trustStrip={dictionary.home.trustStrip}
       />
-
-      <div className="container mx-auto mt-10">
-        <div className="grid gap-3 rounded-[2rem] border border-border bg-surface p-4 shadow-soft md:grid-cols-3 md:p-5">
-          {dictionary.home.trustStrip.map((item) => (
-            <div
-              key={item}
-              className="rounded-[1.4rem] bg-background-muted px-4 py-3 text-sm text-foreground-soft">
-              {item}
-            </div>
-          ))}
-        </div>
-      </div>
 
       <SectionShell>
         <SectionIntro

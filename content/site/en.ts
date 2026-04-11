@@ -72,7 +72,7 @@ export const enSite: SiteDictionary = {
   home: {
     hero: {
       eyebrow: "Software developer with infrastructure roots",
-      title: "Building software on top of strong technical foundations.",
+      title: "Software built on strong technical foundations.",
       alternatives: [
         "Software developer with infrastructure roots.",
         "From systems and networking into software engineering.",

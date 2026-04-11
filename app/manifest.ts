@@ -10,8 +10,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "Bilingual portfolio of Daniël van Ginneken, a software developer with infrastructure roots.",
     start_url: "/nl",
     display: "standalone",
-    background_color: "#f4efe7",
-    theme_color: "#f4efe7",
+    background_color: "#090e14",
+    theme_color: "#090e14",
     lang: "nl",
     icons: [
       {

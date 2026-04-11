@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { Button } from "@/components/ui/button";
 import { getLocalizedPath } from "@/lib/site";
 import type { Locale, SiteDictionary } from "@/types/site";
 
@@ -15,36 +14,43 @@ interface SiteHeaderProps {
 
 export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
   return (
-    <header className="sticky top-0 z-30 border-b border-border bg-background backdrop-blur">
-      <div className="container mx-auto flex h-20 items-center justify-between gap-6">
-        <Link href={getLocalizedPath(locale, "home")} className="shrink-0">
-          <span className="font-mono text-xs uppercase tracking-[0.26em] text-foreground-soft">
-            Daniël van Ginneken
-          </span>
-        </Link>
+    <header className="sticky top-0 z-40">
+      <div className="container mx-auto">
+        <div className="header-shell">
+          <Link href={getLocalizedPath(locale, "home")} className="min-w-0 max-w-[18rem]">
+            <span className="block header-brand-kicker">Daniël van Ginneken</span>
+            <span className="mt-1 block truncate text-[0.82rem] text-foreground-soft">
+              {locale === "nl"
+                ? "Software developer met infrastructuurroots"
+                : "Software developer with infrastructure roots"}
+            </span>
+          </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex">
-          {dictionary.nav.items.map((item) => (
+          <nav className="hidden items-center justify-center gap-7 xl:flex">
+            {dictionary.nav.items.map((item) => (
+              <Link
+                key={item.key}
+                href={getLocalizedPath(locale, item.key)}
+                className="header-nav-link">
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="hidden items-center gap-5 xl:flex">
+            <LocaleSwitcher locale={locale} ariaLabel={dictionary.nav.languageToggle} />
+            <ThemeToggle ariaLabel={dictionary.nav.themeToggle} locale={locale} />
             <Link
-              key={item.key}
-              href={getLocalizedPath(locale, item.key)}
-              className="text-sm font-medium text-foreground-soft transition-colors hover:text-foreground">
-              {item.label}
+              href={getLocalizedPath(locale, "resume")}
+              className="inline-flex items-center text-sm font-medium text-foreground transition-colors hover:text-accent">
+              {dictionary.nav.resumeCta}
             </Link>
-          ))}
-        </nav>
+          </div>
 
-        <div className="hidden items-center gap-3 lg:flex">
-          <LocaleSwitcher locale={locale} ariaLabel={dictionary.nav.languageToggle} />
-          <ThemeToggle ariaLabel={dictionary.nav.themeToggle} />
-          <Button asChild variant="secondary">
-            <Link href={getLocalizedPath(locale, "resume")}>{dictionary.nav.resumeCta}</Link>
-          </Button>
-        </div>
-
-        <div className="flex items-center gap-3 lg:hidden">
-          <ThemeToggle ariaLabel={dictionary.nav.themeToggle} />
-          <MobileNav locale={locale} dictionary={dictionary} />
+          <div className="flex items-center gap-2 xl:hidden">
+            <ThemeToggle ariaLabel={dictionary.nav.themeToggle} locale={locale} />
+            <MobileNav locale={locale} dictionary={dictionary} />
+          </div>
         </div>
       </div>
     </header>

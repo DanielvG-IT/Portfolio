@@ -99,8 +99,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f4efe7" },
-    { media: "(prefers-color-scheme: dark)", color: "#10161c" },
+    { media: "(prefers-color-scheme: light)", color: "#eef3f8" },
+    { media: "(prefers-color-scheme: dark)", color: "#090e14" },
   ],
 };
 
@@ -119,7 +119,7 @@ export default async function RootLayout({
         className={`${instrumentSans.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange>
           {children}

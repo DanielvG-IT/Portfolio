@@ -6,14 +6,14 @@ interface TimelineProps {
 
 export function Timeline({ items }: TimelineProps) {
   return (
-    <div className="relative pl-6 md:pl-8">
-      <div className="absolute bottom-0 left-[11px] top-0 w-px bg-border md:left-[15px]" />
+    <div className="relative pl-7 md:pl-9">
+      <div className="absolute bottom-0 left-[12px] top-0 w-px bg-border md:left-[16px]" />
       <div className="space-y-8">
         {items.map((item) => (
           <article key={`${item.period}-${item.title}`} className="relative surface-card p-6 md:p-7">
-            <span className="absolute left-[-20px] top-8 h-3.5 w-3.5 rounded-full border-4 border-background bg-accent md:left-[-26px]" />
+            <span className="absolute left-[-21px] top-8 h-3.5 w-3.5 rounded-full border-[3px] border-background bg-accent md:left-[-27px]" />
             <p className="eyebrow">{item.period}</p>
-            <h3 className="mt-3 text-2xl font-semibold tracking-[-0.03em]">
+            <h3 className="mt-3 text-[1.8rem] font-semibold tracking-[-0.04em]">
               {item.title}
             </h3>
             <p className="mt-2 text-sm font-medium text-foreground-soft">

@@ -24,16 +24,18 @@ export function CapabilityGrid({ locale, items }: CapabilityGridProps) {
       {items.map((item) => (
         <article key={item.title} className="surface-card flex h-full flex-col p-6 md:p-7">
           <p className="eyebrow">{capabilityStateLabels[locale][item.state]}</p>
-          <h3 className="mt-4 text-2xl font-semibold tracking-[-0.03em]">{item.title}</h3>
+          <h3 className="mt-4 text-[1.7rem] font-semibold tracking-[-0.04em]">
+            {item.title}
+          </h3>
           <p className="mt-4 text-base leading-7 text-foreground-soft">{item.description}</p>
-          <p className="mt-5 rounded-[1.2rem] bg-background-muted px-4 py-4 text-sm leading-6 text-foreground-soft">
+          <p className="keyline-note mt-5 px-4 py-4 text-sm leading-6 text-foreground-soft">
             {item.evidence}
           </p>
           <ul className="mt-6 flex flex-wrap gap-2">
             {item.items.map((tag) => (
               <li
                 key={tag}
-                className="rounded-full border border-border px-3 py-2 text-xs font-medium text-foreground-soft">
+                className="rounded-[0.95rem] border border-border bg-background-muted px-3 py-2 text-xs font-medium text-foreground-soft">
                 {tag}
               </li>
             ))}

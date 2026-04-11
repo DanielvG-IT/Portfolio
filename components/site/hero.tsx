@@ -1,91 +1,119 @@
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
 import { resumeFile } from "@/content/socials";
-import { getLocalizedPath } from "@/lib/site";
 import type { HeroContent, Locale, SiteDictionary } from "@/types/site";
 
-import { CTAGroup } from "./cta-group";
 import { PortraitBlock } from "./portrait-block";
 
 interface HeroProps {
   locale: Locale;
   content: HeroContent;
   dictionary: SiteDictionary;
-  portraitCaption: string;
+  trustStrip: string[];
 }
 
-export function Hero({
-  locale,
-  content,
-  dictionary,
-  portraitCaption,
-}: HeroProps) {
+export function Hero({ locale, content, dictionary, trustStrip }: HeroProps) {
   return (
-    <section className="container mx-auto pt-10 md:pt-14 xl:pt-20">
-      <div className="grid gap-8 xl:grid-cols-[minmax(0,1.2fr)_minmax(320px,440px)] xl:items-center">
-        <div className="fade-up">
-          <p className="eyebrow mb-5">{content.eyebrow}</p>
-          <h1 className="max-w-4xl text-balance text-5xl font-semibold tracking-[-0.05em] md:text-6xl xl:text-[5.25rem] xl:leading-[0.95]">
-            {content.title}
-          </h1>
-          <p className="section-copy mt-6 max-w-2xl">{content.intro}</p>
+    <section className="container mx-auto pt-8 md:pt-10 xl:pt-12">
+      <div className="hero-stage">
+        <div className="hero-copy fade-up">
+          <div className="hero-kicker-row">
+            <p className="eyebrow">{content.eyebrow}</p>
+            <span className="hero-kicker-meta">
+              {locale === "nl"
+                ? "Nederland • 19 • student software development"
+                : "Netherlands • 19 • software development student"}
+            </span>
+          </div>
 
-          <div className="mt-6 grid gap-3 sm:grid-cols-2">
-            {content.detailLines.map((line) => (
-              <div
-                key={line}
-                className="rounded-[1.4rem] border border-border bg-surface px-4 py-4 text-sm leading-6 text-foreground-soft shadow-soft">
-                {line}
+          <h1 className="hero-title font-semibold">{content.title}</h1>
+          <p className="hero-intro">{content.intro}</p>
+
+          <div className="hero-cta-row">
+            <Button asChild size="lg">
+              <Link href={resumeFile(locale)} download>
+                {dictionary.common.downloadResume}
+              </Link>
+            </Button>
+
+            <Link
+              href="https://github.com/DanielvG-IT"
+              target="_blank"
+              rel="noreferrer"
+              className="hero-inline-link">
+              {dictionary.common.github}
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </Link>
+
+            <Link
+              href="https://linkedin.com/in/daniel-v-ginneken/"
+              target="_blank"
+              rel="noreferrer"
+              className="hero-inline-link">
+              {dictionary.common.linkedin}
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
+
+          <div className="hero-trust-row">
+            {trustStrip.map((item) => (
+              <div key={item} className="hero-trust-item">
+                {item}
               </div>
             ))}
           </div>
+        </div>
 
-          <div className="mt-8">
-            <CTAGroup
-              items={[
-                {
-                  label: dictionary.common.downloadResume,
-                  href: resumeFile(locale),
-                  download: true,
-                },
-                {
-                  label: dictionary.common.github,
-                  href: "https://github.com/DanielvG-IT",
-                  variant: "secondary",
-                  external: true,
-                },
-                {
-                  label: dictionary.common.linkedin,
-                  href: "https://linkedin.com/in/daniel-v-ginneken/",
-                  variant: "secondary",
-                  external: true,
-                },
-              ]}
+        <div className="hero-visual">
+          <div className="hero-module order-2 p-5 xl:absolute xl:left-0 xl:top-10 xl:w-[18.5rem]">
+            <p className="eyebrow">
+              {locale === "nl" ? "Hoofdrichting" : "Primary direction"}
+            </p>
+            <p className="hero-module-title mt-4">
+              {locale === "nl"
+                ? "Software eerst, met technische diepte erachter."
+                : "Software first, with technical depth behind it."}
+            </p>
+            <p className="hero-module-copy">{content.detailLines[0]}</p>
+          </div>
+
+          <div className="order-1 xl:ml-[5.25rem]">
+            <PortraitBlock
+              variant="hero"
+              priority
+              badge={
+                locale === "nl"
+                  ? "Software / infrastructuur"
+                  : "Software / infrastructure"
+              }
+              overlayLabel={
+                locale === "nl" ? "Portret / identiteit" : "Portrait / identity"
+              }
+              caption=""
             />
           </div>
 
-          <div className="mt-10 rounded-[1.8rem] border border-border bg-surface p-5 shadow-soft">
-            <p className="eyebrow mb-3">Headline directions</p>
-            <ul className="space-y-3 text-sm leading-6 text-foreground-soft">
-              {content.alternatives.map((alternative) => (
-                <li key={alternative} className="flex gap-3">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent" />
-                  <span>{alternative}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="mt-8">
-            <Link
-              href={getLocalizedPath(locale, "projects")}
-              className="font-mono text-xs uppercase tracking-[0.2em] text-foreground-soft transition-colors hover:text-foreground">
-              {dictionary.common.viewAllProjects}
-            </Link>
+          <div className="hero-module order-3 p-5 xl:absolute xl:bottom-9 xl:left-0 xl:mt-0 xl:w-[20.5rem]">
+            <p className="eyebrow">
+              {locale === "nl" ? "Fundament" : "Roots"}
+            </p>
+            <p className="hero-module-title mt-4">
+              {locale === "nl"
+                ? "Troubleshooting, Linux en netwerken als basis."
+                : "Troubleshooting, Linux, and networking as a base."}
+            </p>
+            <p className="hero-module-copy">{content.detailLines[1]}</p>
+            <div className="hero-module-tags">
+              <span className="hero-module-tag">Linux</span>
+              <span className="hero-module-tag">
+                {locale === "nl" ? "Netwerken" : "Networking"}
+              </span>
+              <span className="hero-module-tag">Troubleshooting</span>
+            </div>
           </div>
         </div>
-
-        <PortraitBlock priority caption={portraitCaption} />
       </div>
     </section>
   );

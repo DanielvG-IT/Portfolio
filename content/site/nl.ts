@@ -72,7 +72,7 @@ export const nlSite: SiteDictionary = {
   home: {
     hero: {
       eyebrow: "Software developer met infrastructuurroots",
-      title: "Software bouwen op sterke technische fundamenten.",
+      title: "Software gebouwd op sterke technische fundamenten.",
       alternatives: [
         "Software developer met infrastructuurroots.",
         "Van systemen en netwerken naar software engineering.",

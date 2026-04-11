@@ -23,7 +23,7 @@ export function LocaleSwitcher({ locale, ariaLabel }: LocaleSwitcherProps) {
   return (
     <div
       aria-label={ariaLabel}
-      className="inline-flex items-center rounded-full border border-border bg-surface p-1 shadow-soft">
+      className="flex items-center gap-2 font-mono text-[0.64rem] uppercase tracking-[0.24em]">
       {locales.map((entry) => {
         const href = `/${entry}${trailingSegments.length ? `/${trailingSegments.join("/")}` : ""}`;
         const active = entry === locale;
@@ -32,9 +32,10 @@ export function LocaleSwitcher({ locale, ariaLabel }: LocaleSwitcherProps) {
           <Link
             key={entry}
             href={href}
+            aria-current={active ? "page" : undefined}
             className={cn(
-              "rounded-full px-3 py-2 font-mono text-xs uppercase tracking-[0.2em] text-foreground-soft transition-colors",
-              active && "bg-background text-foreground shadow-soft",
+              "transition-colors",
+              active ? "text-foreground" : "text-foreground-muted hover:text-foreground-soft",
             )}>
             {entry}
           </Link>
