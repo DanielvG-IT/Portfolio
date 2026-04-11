@@ -23,22 +23,24 @@ export function LocaleSwitcher({ locale, ariaLabel }: LocaleSwitcherProps) {
   return (
     <div
       aria-label={ariaLabel}
-      className="flex items-center gap-2 font-mono text-[0.64rem] uppercase tracking-[0.24em]">
-      {locales.map((entry) => {
+      className="flex items-center gap-1 text-[15px] font-normal text-[#6B6560]">
+      {locales.map((entry, index) => {
         const href = `/${entry}${trailingSegments.length ? `/${trailingSegments.join("/")}` : ""}`;
         const active = entry === locale;
 
         return (
-          <Link
-            key={entry}
-            href={href}
-            aria-current={active ? "page" : undefined}
-            className={cn(
-              "transition-colors",
-              active ? "text-foreground" : "text-foreground-muted hover:text-foreground-soft",
-            )}>
-            {entry}
-          </Link>
+          <span key={entry} className="inline-flex items-center gap-1">
+            {index > 0 ? <span aria-hidden>/</span> : null}
+            <Link
+              href={href}
+              aria-current={active ? "page" : undefined}
+              className={cn(
+                "uppercase transition-colors hover:text-[#1A1A18]",
+                active ? "text-[#1A1A18]" : "text-[#6B6560]",
+              )}>
+              {entry}
+            </Link>
+          </span>
         );
       })}
     </div>

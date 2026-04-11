@@ -5,23 +5,21 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[0.92rem] text-sm font-medium transition-[background-color,border-color,color,box-shadow,transform] focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center whitespace-nowrap focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
         primary:
-          "border border-foreground bg-foreground text-background shadow-soft hover:-translate-y-0.5 hover:border-accent hover:bg-accent hover:text-accent-foreground",
+          "rounded-[4px] border-[1.5px] border-[#2D4A6B] bg-transparent text-[15px] font-medium text-[#2D4A6B] transition-[background,color] duration-180 ease-in hover:bg-[#2D4A6B] hover:text-[#F4EFE6]",
         secondary:
-          "border border-border bg-transparent text-foreground hover:-translate-y-0.5 hover:border-border-strong hover:bg-surface",
-        soft:
-          "border border-border bg-surface text-foreground-soft hover:-translate-y-0.5 hover:border-border-strong hover:text-foreground",
-        ghost:
-          "text-foreground-soft hover:-translate-y-0.5 hover:bg-surface-strong hover:text-foreground",
+          "rounded-none border-0 bg-transparent p-0 text-[#2D4A6B] underline decoration-[#2D4A6B66] underline-offset-4 transition-colors hover:text-[#1A1A18]",
+        soft: "rounded-[8px] border border-[#D5CFC4] bg-[#EDE8DF] text-[#1A1A18]",
+        ghost: "bg-transparent text-[#6B6560] hover:text-[#1A1A18]",
       },
       size: {
-        sm: "h-10 px-4",
-        md: "h-11 px-5",
-        lg: "h-11 px-4.5 font-mono text-[0.68rem] uppercase tracking-[0.2em]",
+        sm: "px-5 py-2.5",
+        md: "px-6 py-3",
+        lg: "px-7 py-[13px]",
       },
     },
     defaultVariants: {
@@ -32,7 +30,8 @@ const buttonVariants = cva(
 );
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }

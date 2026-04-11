@@ -116,8 +116,8 @@ export default async function RootLayout({
         className={`${instrumentSans.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
           disableTransitionOnChange>
           <DocumentLocaleSync />
           {children}

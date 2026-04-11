@@ -66,7 +66,6 @@ export default async function HomePage({
         locale={localeParam}
         content={dictionary.home.hero}
         dictionary={dictionary}
-        trustStrip={dictionary.home.trustStrip}
       />
 
       <SectionShell>
@@ -121,7 +120,7 @@ export default async function HomePage({
         <div className="mt-8">
           <Link
             href={getLocalizedPath(localeParam, "projects")}
-            className="font-mono text-xs uppercase tracking-[0.2em] text-foreground-soft transition-colors hover:text-foreground">
+            className="text-link text-[15px]">
             {dictionary.common.viewAllProjects}
           </Link>
         </div>
@@ -133,11 +132,11 @@ export default async function HomePage({
           title={dictionary.home.journey.title}
           description={dictionary.home.journey.description}
         />
-        <Timeline items={journeyPreview} />
+        <Timeline items={journeyPreview} locale={localeParam} />
         <div className="mt-8">
           <Link
             href={getLocalizedPath(localeParam, "journey")}
-            className="font-mono text-xs uppercase tracking-[0.2em] text-foreground-soft transition-colors hover:text-foreground">
+            className="text-link text-[15px]">
             {dictionary.common.viewJourney}
           </Link>
         </div>
@@ -157,7 +156,7 @@ export default async function HomePage({
       </SectionShell>
 
       <SectionShell className="pt-0">
-        <div className="surface-card grid gap-8 p-8 md:p-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+        <div className="grid gap-8 border-t border-[#D5CFC4] pt-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
           <div>
             <p className="eyebrow">{dictionary.home.contact.eyebrow}</p>
             <h2 className="section-title mt-4">
@@ -173,6 +172,7 @@ export default async function HomePage({
                 {
                   label: dictionary.common.email,
                   href: "mailto:daniel@danielvanginneken.nl",
+                  variant: "secondary",
                 },
                 {
                   label: dictionary.common.linkedin,

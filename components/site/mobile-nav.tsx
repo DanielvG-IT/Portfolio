@@ -2,10 +2,7 @@
 
 import * as Dialog from "@radix-ui/react-dialog";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { getLocalizedPath } from "@/lib/site";
 import type { Locale, SiteDictionary } from "@/types/site";
 
@@ -23,62 +20,55 @@ export function MobileNav({ locale, dictionary }: MobileNavProps) {
         <button
           type="button"
           aria-label={dictionary.nav.openMenu}
-          className="header-icon-button xl:hidden">
-          <Menu className="h-5 w-5" />
+          className="flex h-8 w-8 items-center justify-center xl:hidden">
+          <span className="sr-only">{dictionary.nav.openMenu}</span>
+          <span className="flex flex-col gap-1">
+            <span className="block h-[2px] w-5 bg-[#1A1A18]" />
+            <span className="block h-[2px] w-5 bg-[#1A1A18]" />
+            <span className="block h-[2px] w-5 bg-[#1A1A18]" />
+          </span>
         </button>
       </Dialog.Trigger>
 
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-40 bg-black/50 backdrop-blur-md" />
-        <Dialog.Content
-          className={cn(
-            "fixed inset-x-4 top-4 z-50 overflow-hidden rounded-[1.8rem] border border-border bg-background p-5 shadow-lift",
-            "focus:outline-none xl:hidden",
-          )}>
-          <div className="hairline-grid absolute inset-0 opacity-15" />
-          <div className="relative mb-8 flex items-start justify-between gap-4">
-            <div>
-              <Dialog.Title className="header-brand-kicker">
-                Daniël van Ginneken
-              </Dialog.Title>
-              <p className="mt-2 max-w-[16rem] text-sm leading-6 text-foreground-soft">
-                {locale === "nl"
-                  ? "Software developer met infrastructuurroots"
-                  : "Software developer with infrastructure roots"}
-              </p>
-            </div>
+        <Dialog.Overlay className="fixed inset-0 z-40 bg-black/20" />
+        <Dialog.Content className="fixed inset-0 z-50 bg-[#F4EFE6] px-6 pb-12 pt-5 opacity-0 data-[state=open]:translate-y-0 data-[state=open]:opacity-100 data-[state=closed]:-translate-y-2 data-[state=closed]:opacity-0 data-[state=open]:duration-200 data-[state=open]:ease-out focus:outline-none xl:hidden">
+          <div className="mb-10 flex items-center justify-between">
+            <Dialog.Title className="text-[15px] font-medium text-[#1A1A18]">
+              Daniël van Ginneken
+            </Dialog.Title>
             <Dialog.Close asChild>
               <button
                 type="button"
                 aria-label={dictionary.nav.closeMenu}
-                className="header-icon-button">
-                <X className="h-4 w-4" />
+                className="flex h-8 w-8 items-center justify-center">
+                <span className="sr-only">{dictionary.nav.closeMenu}</span>
+                <span className="relative block h-5 w-5">
+                  <span className="absolute left-0 top-1/2 block h-[2px] w-5 -translate-y-1/2 rotate-45 bg-[#1A1A18]" />
+                  <span className="absolute left-0 top-1/2 block h-[2px] w-5 -translate-y-1/2 -rotate-45 bg-[#1A1A18]" />
+                </span>
               </button>
             </Dialog.Close>
           </div>
 
-          <nav className="relative flex flex-col">
+          <nav className="flex min-h-[70vh] flex-col justify-center pl-12">
             {dictionary.nav.items.map((item) => (
               <Dialog.Close asChild key={item.key}>
                 <Link
                   href={getLocalizedPath(locale, item.key)}
-                  className="border-b border-border px-0 py-4 text-[1.55rem] font-semibold tracking-[-0.05em] text-foreground transition-colors hover:text-accent">
+                  className="mobile-menu-link py-4 transition-colors hover:text-[#2D4A6B]">
                   {item.label}
                 </Link>
               </Dialog.Close>
             ))}
-          </nav>
 
-          <div className="relative mt-8 flex items-center justify-between gap-4">
-            <LocaleSwitcher locale={locale} ariaLabel={dictionary.nav.languageToggle} />
-            <Dialog.Close asChild>
-              <Button asChild size="lg">
-                <Link href={getLocalizedPath(locale, "resume")}>
-                  {dictionary.nav.resumeCta}
-                </Link>
-              </Button>
-            </Dialog.Close>
-          </div>
+            <div className="mt-8 text-[16px] text-[#6B6560]">
+              <LocaleSwitcher
+                locale={locale}
+                ariaLabel={dictionary.nav.languageToggle}
+              />
+            </div>
+          </nav>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>

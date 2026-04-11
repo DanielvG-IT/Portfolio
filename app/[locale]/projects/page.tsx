@@ -41,45 +41,25 @@ export default async function ProjectsPage({
 
   const dictionary = getDictionary(localeParam);
   const selectedProjects = getProjectsByStatus(localeParam, "selected");
-  const exploratoryProjects = getProjectsByStatus(localeParam, "exploration");
-  const buildingProjects = getProjectsByStatus(localeParam, "building");
+  const developmentProjects = [
+    ...getProjectsByStatus(localeParam, "exploration"),
+    ...getProjectsByStatus(localeParam, "building"),
+  ];
 
   return (
     <>
       <SectionShell>
-        <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_24rem] xl:items-end">
-          <SectionIntro {...dictionary.projectsPage.intro} className="mb-0" />
-          <div className="surface-card p-6">
-            <div className="grid gap-5 sm:grid-cols-3 xl:grid-cols-1">
-              <div>
-                <div className="signature-label">
-                  <p className="eyebrow">{dictionary.common.selectedBuilds}</p>
-                </div>
-                <p className="mt-3 text-[1.9rem] font-semibold tracking-[-0.05em]">
-                  {selectedProjects.length}
-                </p>
-              </div>
-              <div>
-                <div className="signature-label">
-                  <p className="eyebrow">{dictionary.common.technicalExplorations}</p>
-                </div>
-                <p className="mt-3 text-[1.9rem] font-semibold tracking-[-0.05em]">
-                  {exploratoryProjects.length}
-                </p>
-              </div>
-              <div>
-                <div className="signature-label">
-                  <p className="eyebrow">{dictionary.common.currentlyBuilding}</p>
-                </div>
-                <p className="mt-3 text-[1.9rem] font-semibold tracking-[-0.05em]">
-                  {buildingProjects.length}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mt-8 keyline-note px-5 py-5 text-sm leading-7 text-foreground-soft">
-          {dictionary.projectsPage.honestyNote}
+        <div className="pt-20">
+          <SectionIntro
+            eyebrow={dictionary.projectsPage.intro.eyebrow}
+            title={dictionary.projectsPage.intro.title}
+            description={dictionary.projectsPage.intro.description}
+            size="compact"
+            className="mb-0"
+          />
+          <p className="mt-5 max-w-[48ch] text-[17px] text-[#6B6560]">
+            {dictionary.projectsPage.honestyNote}
+          </p>
         </div>
       </SectionShell>
 
@@ -87,7 +67,7 @@ export default async function ProjectsPage({
         <ProjectGrid
           eyebrow={dictionary.common.selectedBuilds}
           title={dictionary.common.selectedBuilds}
-          description={dictionary.projectsPage.sectionDescriptions.selected}
+          description={undefined}
           projects={selectedProjects}
           dictionary={dictionary}
         />
@@ -95,20 +75,10 @@ export default async function ProjectsPage({
 
       <SectionShell className="pt-0">
         <ProjectGrid
-          eyebrow={dictionary.common.technicalExplorations}
-          title={dictionary.common.technicalExplorations}
-          description={dictionary.projectsPage.sectionDescriptions.exploration}
-          projects={exploratoryProjects}
-          dictionary={dictionary}
-        />
-      </SectionShell>
-
-      <SectionShell>
-        <ProjectGrid
           eyebrow={dictionary.common.currentlyBuilding}
           title={dictionary.common.currentlyBuilding}
-          description={dictionary.projectsPage.sectionDescriptions.building}
-          projects={buildingProjects}
+          description={undefined}
+          projects={developmentProjects}
           dictionary={dictionary}
         />
       </SectionShell>

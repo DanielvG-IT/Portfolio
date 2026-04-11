@@ -1,8 +1,7 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { resumeFile } from "@/content/socials";
+import { getLocalizedPath } from "@/lib/site";
 import type { HeroContent, Locale, SiteDictionary } from "@/types/site";
 
 import { PortraitBlock } from "./portrait-block";
@@ -11,124 +10,95 @@ interface HeroProps {
   locale: Locale;
   content: HeroContent;
   dictionary: SiteDictionary;
-  trustStrip: string[];
 }
 
-export function Hero({ locale, content, dictionary, trustStrip }: HeroProps) {
+export function Hero({ locale, content, dictionary }: HeroProps) {
+  const proofBlocks =
+    locale === "nl"
+      ? [
+          {
+            label: "Software focus",
+            title: "Softwareontwikkeling als hoofdrichting",
+            copy: "Ik bouw bewust aan een sterker softwareprofiel. Rustig, gestructureerd en met aandacht voor kwaliteit op lange termijn.",
+          },
+          {
+            label: "Infrastructure background",
+            title: "Gegrond in systemen en troubleshooting",
+            copy: "Mijn achtergrond in support en infrastructuur maakt het makkelijker om software te bouwen die ook buiten ideale omstandigheden klopt.",
+          },
+          {
+            label: "Current status",
+            title: "Beschikbaar voor stagegesprekken",
+            copy: "Ik zoek omgevingen waar technisch vakmanschap en softwaregroei samenkomen. E-mail of LinkedIn werkt het snelst voor contact.",
+          },
+        ]
+      : [
+          {
+            label: "Software focus",
+            title: "Software development as primary direction",
+            copy: "I am intentionally building a stronger software profile with calm execution, clear structure, and long-term quality standards.",
+          },
+          {
+            label: "Infrastructure background",
+            title: "Grounded in systems and troubleshooting",
+            copy: "My support and infrastructure background helps me build software that behaves better outside ideal conditions.",
+          },
+          {
+            label: "Current status",
+            title: "Open to internship conversations",
+            copy: "I am looking for teams where technical depth and software growth are both valued. Email or LinkedIn is the fastest way to connect.",
+          },
+        ];
+
   return (
-    <section className="container mx-auto pt-8 md:pt-10 xl:pt-12">
-      <div className="hero-stage">
-        <div className="hero-copy fade-up">
-          <div className="hero-kicker-row">
-            <span className="signature-label">
-              <p className="eyebrow">{content.eyebrow}</p>
-            </span>
-            <span className="hero-kicker-meta">
-              {locale === "nl"
-                ? "Nederland • 19 • student software development"
-                : "Netherlands • 19 • software development student"}
-            </span>
-          </div>
-
-          <h1 className="hero-title font-semibold">
-            {content.titleLines.map((line, index) => (
-              <span
-                key={line}
-                className={`hero-title-line ${index === 1 ? "hero-title-line-offset" : ""}`}>
-                {line}
-              </span>
-            ))}
-          </h1>
-          <p className="hero-intro">{content.intro}</p>
-
-          <div className="hero-cta-row">
-            <Button asChild size="lg">
-              <Link href={resumeFile(locale)} download>
-                {dictionary.common.downloadResume}
-              </Link>
-            </Button>
-
-            <Link
-              href="https://github.com/DanielvG-IT"
-              target="_blank"
-              rel="noreferrer"
-              className="hero-inline-link">
-              {dictionary.common.github}
-              <ArrowUpRight className="h-3.5 w-3.5" />
-            </Link>
-
-            <Link
-              href="https://linkedin.com/in/daniel-v-ginneken/"
-              target="_blank"
-              rel="noreferrer"
-              className="hero-inline-link">
-              {dictionary.common.linkedin}
-              <ArrowUpRight className="h-3.5 w-3.5" />
-            </Link>
-          </div>
-
-          <div className="hero-trust-row">
-            {trustStrip.map((item) => (
-              <div key={item} className="hero-trust-item">
-                {item}
+    <>
+      <section className="hero-shell">
+        <div className="container mx-auto">
+          <div className="hero-grid">
+            <div className="hero-copy">
+              <div className="signature-label">
+                <p className="eyebrow">{content.eyebrow}</p>
               </div>
+
+              <h1 className="hero-title mt-4">
+                {content.titleLines[0]}
+                <br />
+                {content.titleLines[1]}
+                <br />
+                {content.titleLines[2]}
+              </h1>
+
+              <p className="hero-intro">{content.intro}</p>
+
+              <div className="mt-9">
+                <Button asChild>
+                  <Link href={getLocalizedPath(locale, "projects")}>
+                    {locale === "nl" ? "Bekijk mijn werk" : "View my work"}
+                  </Link>
+                </Button>
+              </div>
+            </div>
+
+            <div className="hero-media">
+              <PortraitBlock variant="hero" priority caption="" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="proof-row">
+        <div className="container mx-auto">
+          <div className="proof-grid">
+            {proofBlocks.map((block) => (
+              <article key={block.title} className="proof-item">
+                <p className="eyebrow">{block.label}</p>
+                <h2 className="proof-title">{block.title}</h2>
+                <p className="proof-copy">{block.copy}</p>
+              </article>
             ))}
           </div>
         </div>
-
-        <div className="hero-visual">
-          <div className="hero-module order-2 p-5 xl:absolute xl:left-0 xl:top-10 xl:w-[18rem]">
-            <div className="signature-label">
-              <p className="eyebrow">
-                {locale === "nl" ? "Hoofdrichting" : "Primary direction"}
-              </p>
-            </div>
-            <p className="hero-module-title mt-5">
-              {locale === "nl"
-                ? "Software eerst, met technische diepte erachter."
-                : "Software first, with technical depth behind it."}
-            </p>
-            <p className="hero-module-copy">{content.detailLines[0]}</p>
-          </div>
-
-          <div className="order-1 xl:ml-[5.25rem]">
-            <PortraitBlock
-              variant="hero"
-              priority
-              badge={
-                locale === "nl"
-                  ? "Software / infrastructuur"
-                  : "Software / infrastructure"
-              }
-              overlayLabel={
-                locale === "nl" ? "Portret / identiteit" : "Portrait / identity"
-              }
-              caption=""
-            />
-          </div>
-
-          <div className="hero-module order-3 p-5 xl:absolute xl:bottom-9 xl:left-0 xl:mt-0 xl:w-[21rem]">
-            <div className="signature-label">
-              <p className="eyebrow">
-                {locale === "nl" ? "Fundament" : "Roots"}
-              </p>
-            </div>
-            <p className="hero-module-title mt-5">
-              {locale === "nl"
-                ? "Troubleshooting, Linux en netwerken als basis."
-                : "Troubleshooting, Linux, and networking as a base."}
-            </p>
-            <p className="hero-module-copy">{content.detailLines[1]}</p>
-            <div className="hero-module-tags">
-              <span className="hero-module-tag">Linux</span>
-              <span className="hero-module-tag">
-                {locale === "nl" ? "Netwerken" : "Networking"}
-              </span>
-              <span className="hero-module-tag">Troubleshooting</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

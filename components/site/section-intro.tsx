@@ -3,36 +3,38 @@ import { cn } from "@/lib/utils";
 interface SectionIntroProps {
   eyebrow: string;
   title: string;
-  description: string;
-  align?: "left" | "center";
+  description?: string;
   className?: string;
+  size?: "default" | "inner" | "compact";
 }
 
 export function SectionIntro({
   eyebrow,
   title,
   description,
-  align = "left",
   className,
+  size = "default",
 }: SectionIntroProps) {
+  const titleClass =
+    size === "inner"
+      ? "text-[clamp(42px,4.5vw,64px)]"
+      : size === "compact"
+        ? "text-[clamp(28px,3vw,40px)]"
+        : "section-title";
+
   return (
-    <div
-      className={cn(
-        "mb-10 flex flex-col gap-5 md:mb-12",
-        align === "center" && "items-center text-center",
-        className,
-      )}>
-      <div className={cn("signature-label", align === "center" && "justify-center")}>
+    <div className={cn("mb-16 max-w-[680px]", className)}>
+      <div className="signature-label">
         <p className="eyebrow">{eyebrow}</p>
       </div>
-      <div
+      <h2
         className={cn(
-          "section-intro-grid",
-          align === "center" && "justify-items-center",
+          "mt-4 font-normal leading-[1.08] tracking-[-0.02em] text-[#1A1A18]",
+          titleClass,
         )}>
-        <h2 className="section-title max-w-3xl">{title}</h2>
-        <p className="section-copy section-intro-copy">{description}</p>
-      </div>
+        {title}
+      </h2>
+      {description ? <p className="section-copy">{description}</p> : null}
     </div>
   );
 }

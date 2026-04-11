@@ -1,12 +1,11 @@
 import type { ProjectEntry, SiteDictionary } from "@/types/site";
 
-import { SectionIntro } from "./section-intro";
-import { ProjectCard } from "./project-card";
+import Link from "next/link";
 
 interface ProjectGridProps {
   eyebrow: string;
   title: string;
-  description: string;
+  description?: string;
   projects: ProjectEntry[];
   dictionary: SiteDictionary;
 }
@@ -19,44 +18,51 @@ export function ProjectGrid({
   dictionary,
 }: ProjectGridProps) {
   return (
-    <div className="space-y-8">
-      <div className="grid gap-6 border-t border-border pt-8 lg:grid-cols-[minmax(0,1fr)_12rem] lg:items-end">
-        <SectionIntro
-          eyebrow={eyebrow}
-          title={title}
-          description={description}
-          className="mb-0"
-        />
-        <div className="surface-card p-5">
-          <p className="eyebrow">
-            {dictionary.localeLabel === "Nederlands" ? "Aantal" : "Count"}
-          </p>
-          <p className="mt-4 text-[2.1rem] font-semibold tracking-[-0.06em]">
-            {projects.length}
-          </p>
-          <p className="mt-2 text-sm leading-6 text-foreground-soft">
-            {projects.length === 1
-              ? localeAwareLabel(dictionary, "entry")
-              : localeAwareLabel(dictionary, "entries")}
-          </p>
+    <div>
+      <div className="mb-4">
+        <div className="signature-label">
+          <p className="eyebrow">{eyebrow}</p>
         </div>
+        <h2 className="project-section-title mt-4">{title}</h2>
+        {description ? (
+          <p className="mt-3 max-w-[54ch] text-[15px] text-[#6B6560]">
+            {description}
+          </p>
+        ) : null}
       </div>
 
-      <div className="grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
+      {projects.length === 0 ? (
+        <p className="py-6 text-[15px] text-[#9E9892]">
+          {dictionary.localeLabel === "Nederlands"
+            ? "Hier verschijnen projecten zodra ze inhoudelijk klaar zijn voor publicatie."
+            : "Projects will appear here as soon as they are mature enough for publication."}
+        </p>
+      ) : null}
+
+      <div>
         {projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} dictionary={dictionary} />
+          <article key={project.slug} className="project-row">
+            <h3 className="text-[20px] font-medium text-[#1A1A18]">
+              {project.title}
+            </h3>
+            <p className="eyebrow">{project.category}</p>
+            <p className="text-[15px] text-[#6B6560]">{project.year}</p>
+            <p>
+              {project.links.live || project.links.github ? (
+                <Link
+                  href={project.links.live ?? project.links.github ?? "#"}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-link text-[13px]">
+                  {dictionary.localeLabel === "Nederlands" ? "Bekijk" : "View"}
+                </Link>
+              ) : (
+                <span className="text-[13px] text-[#9E9892]">-</span>
+              )}
+            </p>
+          </article>
         ))}
       </div>
     </div>
   );
-}
-
-function localeAwareLabel(dictionary: SiteDictionary, variant: "entry" | "entries") {
-  const isDutch = dictionary.localeLabel === "Nederlands";
-
-  if (variant === "entry") {
-    return isDutch ? "project in deze categorie" : "project in this group";
-  }
-
-  return isDutch ? "projecten in deze categorie" : "projects in this group";
 }

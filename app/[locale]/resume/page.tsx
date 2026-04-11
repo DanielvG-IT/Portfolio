@@ -61,7 +61,9 @@ export default async function ResumePage({
           <SectionIntro {...dictionary.resumePage.intro} className="mb-0" />
           <div className="surface-card p-5">
             <div className="signature-label">
-              <p className="eyebrow">{localeParam === "nl" ? "Profiel" : "Profile"}</p>
+              <p className="eyebrow">
+                {localeParam === "nl" ? "Profiel" : "Profile"}
+              </p>
             </div>
             <p className="mt-4 text-sm leading-7 text-foreground-soft">
               {localeParam === "nl"
@@ -117,7 +119,7 @@ export default async function ResumePage({
           title={dictionary.resumePage.experienceTitle}
           description={dictionary.resumePage.summary}
         />
-        <Timeline items={experience} />
+        <Timeline items={experience} locale={localeParam} />
       </SectionShell>
 
       <SectionShell className="pt-0">
