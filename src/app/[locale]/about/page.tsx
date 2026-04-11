@@ -62,7 +62,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
         <div className="md:pl-10">
           <div className="relative h-[420px] max-h-[480px] overflow-hidden md:h-[480px]">
             <Image
-              src="/images/portrait.jpg"
+              src="https://avatars.githubusercontent.com/u/72395437"
               alt="Daniël van Ginneken"
               fill
               sizes="(min-width: 768px) 35vw, 100vw"

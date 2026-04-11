@@ -46,7 +46,7 @@ export default function Hero({
 
         <div className="relative min-h-[420px] md:min-h-[calc(100vh-96px)]">
           <Image
-            src="/images/portrait.jpg"
+            src="https://avatars.githubusercontent.com/u/72395437"
             alt="Daniël van Ginneken"
             fill
             sizes="(min-width: 768px) 45vw, 100vw"
