@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
+import MotionReveal from "@/components/ui/MotionReveal";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { getMessages, isLocale } from "@/lib/i18n";
 
@@ -21,12 +22,16 @@ export default async function AboutPage({ params }: AboutPageProps) {
     <section className="px-page-x-sm pb-section-sm pt-[140px] md:px-page-x">
       <div className="mx-auto grid max-w-[1280px] gap-12 md:grid-cols-[58fr_42fr] md:gap-16">
         <div>
-          <SectionLabel label={about.eyebrow} />
-          <h1 className="mt-8 max-w-[700px] font-display text-display-lg font-normal text-ink">
-            {about.headline}
-          </h1>
+          <MotionReveal delay={0.02} y={14} blur={5}>
+            <SectionLabel label={about.eyebrow} />
+          </MotionReveal>
+          <MotionReveal delay={0.1} y={20} blur={8}>
+            <h1 className="mt-8 max-w-[700px] font-display text-display-lg font-normal text-ink">
+              {about.headline}
+            </h1>
+          </MotionReveal>
 
-          <div className="mt-8 space-y-6">
+          <MotionReveal delay={0.16} y={16} blur={7} className="mt-8 space-y-6">
             {about.paragraphs.map((paragraph) => (
               <p
                 key={paragraph}
@@ -34,9 +39,9 @@ export default async function AboutPage({ params }: AboutPageProps) {
                 {paragraph}
               </p>
             ))}
-          </div>
+          </MotionReveal>
 
-          <div className="mt-14">
+          <MotionReveal delay={0.22} y={18} blur={7} className="mt-14">
             <h2 className="font-display text-display-md font-normal text-ink">
               {about.takeawaysTitle}
             </h2>
@@ -56,10 +61,10 @@ export default async function AboutPage({ params }: AboutPageProps) {
                 </div>
               ))}
             </div>
-          </div>
+          </MotionReveal>
         </div>
 
-        <div className="md:pl-10">
+        <MotionReveal delay={0.12} y={26} blur={10} className="md:pl-10">
           <div className="relative h-[420px] max-h-[480px] overflow-hidden md:h-[480px]">
             <Image
               src="https://avatars.githubusercontent.com/u/72395437"
@@ -72,7 +77,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
           <p className="mt-3 text-[13px] italic text-ink-3">
             {about.photoNote}
           </p>
-        </div>
+        </MotionReveal>
       </div>
     </section>
   );

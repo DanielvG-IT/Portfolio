@@ -50,7 +50,9 @@ export default function MobileNav({ locale, links }: MobileNavProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="fixed inset-0 z-[100] bg-[rgba(242,237,228,0.96)] backdrop-blur-[24px]">
+            className="fixed inset-0 z-[100] bg-[rgba(242,237,228,0.88)] backdrop-blur-[26px]">
+            <div className="ambient-grid absolute inset-0 opacity-50" />
+
             <button
               type="button"
               aria-label="Close menu"
@@ -62,37 +64,39 @@ export default function MobileNav({ locale, links }: MobileNavProps) {
               </span>
             </button>
 
-            <div className="flex h-full flex-col justify-center gap-12 pl-10">
-              <nav className="flex flex-col gap-8">
-                {links.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={localePath(locale, link.href)}
-                    onClick={() => setOpen(false)}
-                    className="text-[32px] font-normal leading-none text-ink">
-                    {link.label}
-                  </Link>
-                ))}
-              </nav>
+            <div className="flex h-full items-center px-5">
+              <div className="glass-surface w-full rounded-[28px] px-8 py-12">
+                <nav className="flex flex-col gap-8">
+                  {links.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={localePath(locale, link.href)}
+                      onClick={() => setOpen(false)}
+                      className="text-[32px] font-normal leading-none tracking-[-0.02em] text-ink">
+                      {link.label}
+                    </Link>
+                  ))}
+                </nav>
 
-              <div className="text-[15px] text-ink-2">
-                <button
-                  type="button"
-                  onClick={() => switchLocale("nl")}
-                  className={
-                    locale === "nl" ? "font-medium text-ink" : "text-ink-2"
-                  }>
-                  NL
-                </button>
-                <span className="mx-2 text-ink-3">/</span>
-                <button
-                  type="button"
-                  onClick={() => switchLocale("en")}
-                  className={
-                    locale === "en" ? "font-medium text-ink" : "text-ink-2"
-                  }>
-                  EN
-                </button>
+                <div className="glass-chip mt-12 inline-flex items-center rounded-pill px-4 py-1.5 text-[15px] text-ink-2">
+                  <button
+                    type="button"
+                    onClick={() => switchLocale("nl")}
+                    className={
+                      locale === "nl" ? "font-medium text-ink" : "text-ink-2"
+                    }>
+                    NL
+                  </button>
+                  <span className="mx-2 text-ink-3">/</span>
+                  <button
+                    type="button"
+                    onClick={() => switchLocale("en")}
+                    className={
+                      locale === "en" ? "font-medium text-ink" : "text-ink-2"
+                    }>
+                    EN
+                  </button>
+                </div>
               </div>
             </div>
           </motion.div>

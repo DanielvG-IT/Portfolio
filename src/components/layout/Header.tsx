@@ -58,7 +58,7 @@ export default function Header({ locale, nav }: HeaderProps) {
           Daniël van Ginneken
         </Link>
 
-        <nav className="hidden items-center gap-9 md:flex">
+        <nav className="hidden items-center gap-7 rounded-pill border border-white/55 bg-[rgba(255,255,255,0.3)] px-5 py-2 shadow-surface-1 md:flex">
           {navLinks.map((link) => {
             const target = localePath(locale, link.href);
             const isHome = link.href === "/";
@@ -73,7 +73,7 @@ export default function Header({ locale, nav }: HeaderProps) {
                 className={clsx(
                   "text-[15px] transition-colors duration-150",
                   active
-                    ? "text-ink underline underline-offset-[6px] decoration-2 decoration-slate"
+                    ? "font-medium text-ink underline decoration-2 underline-offset-[6px] decoration-slate"
                     : "text-ink-2 hover:text-ink",
                 )}>
                 {link.label}
@@ -83,7 +83,7 @@ export default function Header({ locale, nav }: HeaderProps) {
         </nav>
 
         <div className="hidden items-center gap-5 md:flex">
-          <span className="text-[14px] text-ink-2">
+          <span className="glass-chip inline-flex items-center rounded-pill px-3 py-1 text-[14px] text-ink-2">
             <button
               type="button"
               onClick={() => switchLocale("nl")}
@@ -107,7 +107,7 @@ export default function Header({ locale, nav }: HeaderProps) {
 
           <Link
             href="/cv.pdf"
-            className="text-[15px] font-medium text-slate transition-colors hover:text-ink">
+            className="rounded-pill border border-slate/35 px-3 py-1.5 text-[14px] font-medium text-slate transition-colors hover:border-slate hover:text-ink">
             {nav.cv}
           </Link>
         </div>

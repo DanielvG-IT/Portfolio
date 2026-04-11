@@ -14,7 +14,23 @@
 
   body {
     min-height: 100%;
-    background-color: #f2ede4;
+    background:
+      radial-gradient(
+        1200px 640px at 8% -12%,
+        rgba(43, 72, 101, 0.14),
+        transparent 62%
+      ),
+      radial-gradient(
+        900px 520px at 100% 0%,
+        rgba(255, 255, 255, 0.56),
+        transparent 60%
+      ),
+      radial-gradient(
+        760px 420px at 46% 100%,
+        rgba(28, 26, 23, 0.08),
+        transparent 70%
+      ),
+      #f2ede4;
     color: #1c1a17;
     font-family: "Inter", system-ui, sans-serif;
   }
@@ -36,6 +52,41 @@
 
   to {
     opacity: 1;
+  }
+}
+
+@keyframes ambientFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -14px, 0);
+  }
+}
+
+@keyframes softPulse {
+  0%,
+  100% {
+    opacity: 0.72;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+}
+
+@keyframes tiltFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate3d(0, -5px, 0) rotate(-0.45deg);
   }
 }
 
@@ -66,11 +117,54 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   }
 
+  .ambient-grid {
+    background-image:
+      linear-gradient(rgba(106, 97, 88, 0.09) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(106, 97, 88, 0.09) 1px, transparent 1px);
+    background-size: 120px 120px;
+    mask-image: radial-gradient(circle at center, black 30%, transparent 85%);
+    -webkit-mask-image: radial-gradient(
+      circle at center,
+      black 30%,
+      transparent 85%
+    );
+  }
+
+  .glass-chip {
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.24);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(12px) saturate(1.3);
+    -webkit-backdrop-filter: blur(12px) saturate(1.3);
+  }
+
   .text-balance {
     text-wrap: balance;
   }
 
   .animate-page-fade {
     animation: pageFade 0.15s ease-out;
+  }
+
+  .animate-ambient-float {
+    animation: ambientFloat 18s ease-in-out infinite;
+  }
+
+  .animate-soft-pulse {
+    animation: softPulse 2.6s ease-in-out infinite;
+  }
+
+  .animate-tilt-float {
+    animation: tiltFloat 9.5s ease-in-out infinite;
+    transform-origin: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-page-fade,
+  .animate-ambient-float,
+  .animate-soft-pulse,
+  .animate-tilt-float {
+    animation: none !important;
   }
 }
