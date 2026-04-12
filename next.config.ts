@@ -25,6 +25,7 @@ const nextConfig: NextConfig = {
     // Standalone needs the full helper package when @swc/helpers is overridden.
     "/*": ["node_modules/@swc/helpers/**/*"],
   },
+  poweredByHeader: false,
 
   // ─── Images ───────────────────────────────────────────
   images: {
