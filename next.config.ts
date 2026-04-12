@@ -21,6 +21,10 @@ const cspDirectives = [
 const nextConfig: NextConfig = {
   // ─── Output ───────────────────────────────────────────
   output: "standalone",
+  outputFileTracingIncludes: {
+    // Standalone needs the full helper package when @swc/helpers is overridden.
+    "/*": ["node_modules/@swc/helpers/**/*"],
+  },
 
   // ─── Images ───────────────────────────────────────────
   images: {
