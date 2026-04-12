@@ -8,8 +8,10 @@ interface SectionLabelProps {
 export default function SectionLabel({ label, className }: SectionLabelProps) {
   return (
     <div className={clsx("flex items-center gap-[10px]", className)}>
-      <div className="h-px w-8 bg-slate/35" />
-      <span className="text-label uppercase text-ink-3">{label}</span>
+      <div className="h-px w-8 bg-slate/45" />
+      <span className="ios-glass-pill px-3 py-1 text-label uppercase text-slate">
+        {label}
+      </span>
     </div>
   );
 }

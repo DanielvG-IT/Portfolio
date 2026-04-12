@@ -1,22 +1,29 @@
-const FALLBACK_SITE_URL = "https://www.danielvanginneken.nl";
+const FALLBACK_SITE_URL = "https://danielvanginneken.nl";
 
 export const siteConfig = {
   name: "Daniël van Ginneken",
   applicationName: "Daniël van Ginneken Portfolio",
   description:
-    "Portfolio van Daniël van Ginneken met software engineering, infrastructuurroots en moderne webbouw.",
+    "Early-career software developer with infrastructure roots, focused on .NET, TypeScript, React, and systems-aware software development.",
   keywords: [
     "Daniël van Ginneken",
     "Portfolio",
-    "Software Development",
+    "Software developer",
+    "Infrastructure roots",
+    "Systems thinking",
+    ".NET",
+    "C#",
     "Next.js",
     "TypeScript",
-    "Frontend",
-    "Infrastructure",
+    "React",
+    "API development",
   ],
   authors: [{ name: "Daniël van Ginneken", url: FALLBACK_SITE_URL }],
   twitterHandle: "@danielvanginneken",
-  sameAs: ["https://github.com/DanielvG-IT", "https://www.linkedin.com"],
+  sameAs: [
+    "https://www.linkedin.com/in/daniel-v-ginneken",
+    "https://github.com/DanielvG-IT",
+  ],
 };
 
 export function getSiteUrl(): URL {

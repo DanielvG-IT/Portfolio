@@ -17,7 +17,7 @@ export default function PrimaryButton({
     <Link
       href={href}
       className={clsx(
-        "inline-flex items-center justify-center rounded-btn border-[1.5px] border-slate bg-transparent px-7 py-[13px] text-[15px] font-medium text-slate transition-all duration-200 ease-out hover:-translate-y-[1px] hover:bg-slate hover:text-ground active:translate-y-0",
+        "ios-glass-pill ios-accent-glow inline-flex items-center justify-center px-7 py-[13px] text-[15px] font-medium text-slate transition-transform duration-200 hover:-translate-y-[1px]",
         className,
       )}>
       {children}

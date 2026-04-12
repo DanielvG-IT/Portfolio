@@ -5,9 +5,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ground: "#F2EDE4",
-        surface: "#EAE4DA",
-        glass: "rgba(242, 237, 228, 0.72)",
+        ground: "#F3EEE4",
+        surface: "#ECE6DD",
+        glass: "rgba(248, 244, 238, 0.9)",
         "glass-dark": "rgba(28, 26, 23, 0.82)",
         ink: "#1C1A17",
         "ink-2": "#6A6158",
@@ -18,8 +18,8 @@ const config: Config = {
         "edge-strong": "rgba(43, 72, 101, 0.25)",
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        display: ["Instrument Serif", "Georgia", "serif"],
+        sans: ["Manrope", "system-ui", "sans-serif"],
+        display: ["Newsreader", "Georgia", "serif"],
       },
       fontSize: {
         "display-xl": [
@@ -50,14 +50,11 @@ const config: Config = {
         pill: "999px",
       },
       boxShadow: {
-        "surface-1": "0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)",
-        "surface-2": "0 4px 16px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.05)",
-        "surface-3":
-          "0 12px 40px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.06)",
-        glass:
-          "0 8px 32px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.35)",
-        "glass-dark":
-          "0 8px 32px rgba(0,0,0,0.30), inset 0 1px 0 rgba(255,255,255,0.08)",
+        "surface-1": "0 1px 2px rgba(0,0,0,0.04)",
+        "surface-2": "0 3px 8px rgba(0,0,0,0.06)",
+        "surface-3": "0 6px 16px rgba(0,0,0,0.08)",
+        glass: "0 2px 6px rgba(0,0,0,0.04)",
+        "glass-dark": "0 2px 6px rgba(0,0,0,0.2)",
       },
       spacing: {
         section: "128px",

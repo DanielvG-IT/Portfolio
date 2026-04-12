@@ -5,148 +5,255 @@
     "projects": "Projects",
     "journey": "Journey",
     "contact": "Contact",
-    "cv": "CV"
+    "cv": "CV / Resume"
   },
   "home": {
-    "eyebrow": "Software developer with infrastructure roots",
-    "headline": ["Software built", "on strong", "foundations."],
-    "body": "I am Daniël van Ginneken, a 19-year-old software development student from the Netherlands. My background in system support and infrastructure gave me a practical technical base. Now I am intentionally moving deeper into software engineering.",
-    "cta": "View my work",
-    "anchors": [
-      {
-        "label": "Software focus",
-        "title": "Building comes first",
-        "body": "From idea to working product: I build with structure, readability, and maintainability in mind."
-      },
-      {
-        "label": "Infrastructure roots",
-        "title": "Grounded in systems",
-        "body": "My earlier IT roles make me think naturally about stability, deployment, and how software behaves in production."
-      },
-      {
-        "label": "Now",
-        "title": "Student and actively building",
-        "body": "I am developing projects that show growth: clear in scope, strong in fundamentals, and focused in execution."
-      }
-    ],
-    "featuredProject": {
-      "category": "Featured build",
-      "name": "Portfolio v2",
-      "description": "A bilingual portfolio experience using a glass-based surface system and editorial pacing.",
-      "linkLabel": "See projects"
+    "hero": {
+      "eyebrow": "Software developer with infrastructure roots",
+      "headline": "Software developer with infrastructure roots.",
+      "subline": "Early-career, systems-aware, and moving deliberately deeper into software development.",
+      "ctaPrimary": "View the work",
+      "ctaSecondary": "Read my story",
+      "portraitNote": "Portrait, 2026."
+    },
+    "foundation": {
+      "heading": "A different kind of starting point.",
+      "paragraphs": [
+        "Most developers start with code. I started with infrastructure: live systems, support environments, and technical operations where reliability is not optional.",
+        "That foundation still shapes how I build software. I think about dependencies, failure modes, and maintainability as part of the build process, not as an afterthought."
+      ]
+    },
+    "capabilities": {
+      "heading": "What I work with",
+      "intro": "An honest map of current areas, foundations, and active growth.",
+      "groups": [
+        {
+          "title": "Software development",
+          "prefix": "Working with",
+          "items": [
+            ".NET / C#",
+            "TypeScript",
+            "JavaScript",
+            "React",
+            "Next.js"
+          ],
+          "note": "Building APIs and web applications with growing focus on structure and reliability."
+        },
+        {
+          "title": "Infrastructure and systems",
+          "prefix": "Practical background in",
+          "items": [
+            "Linux",
+            "Networking",
+            "Infrastructure support",
+            "Troubleshooting",
+            "Technical operations"
+          ],
+          "note": "This foundation informs systems thinking across everything I build."
+        },
+        {
+          "title": "Tooling and environment",
+          "prefix": "Comfortable with",
+          "items": [
+            "Git",
+            "Linux CLI",
+            "Deployment fundamentals",
+            "Cloud-adjacent tooling"
+          ],
+          "note": "Not a DevOps profile, but infrastructure-aware by background."
+        }
+      ]
+    },
+    "work": {
+      "heading": "Where to look next",
+      "intro": "The portfolio is still growing, but the direction is already clear: practical systems, product ambition, and infrastructure-aware engineering.",
+      "references": [
+        {
+          "title": "StrengthSuite",
+          "summary": "A multi-layer gym platform in development that connects backend services, web and mobile interfaces, and Rust-based edge devices for physical access control.",
+          "status": "Currently building"
+        },
+        {
+          "title": "Aegis.Auth",
+          "summary": "A public .NET authentication and authorization library focused on reusable, plug-and-play identity functionality.",
+          "status": "In progress"
+        }
+      ],
+      "cta": "Explore the projects"
     }
   },
   "about": {
     "eyebrow": "About",
-    "headline": "Technical foundation, software as direction.",
-    "paragraphs": [
-      "My first professional steps were in support and infrastructure. That environment taught me how systems are actually used: under pressure, across dependencies, and by people affected immediately by small failures. I carry that perspective into everything I build.",
-      "During my software development studies, my focus shifted from reactive fixes to proactive design. I enjoy building solutions that are not only functional but also logical for future developers. To me, good software is clear, traceable, and calm in daily use.",
-      "I want to grow into a role where software engineering and product thinking come together. Not just shipping features, but explaining choices: why this architecture, why this trade-off, why this step now. That is how building becomes durable and professional."
-    ],
-    "takeawaysTitle": "What I bring",
-    "takeaways": [
+    "headline": "Infrastructure first. Software by intent.",
+    "opening": "Before I wrote software, I worked with the systems software depends on: networking, Linux, infrastructure support, and practical troubleshooting in real environments.",
+    "sections": [
       {
-        "title": "Systems thinking",
-        "body": "I look beyond the code file and factor in infrastructure, reliability, and end-user impact from the start."
+        "title": "Where the technical foundation came from",
+        "paragraphs": [
+          "My technical foundation started in support and infrastructure contexts where systems are live and consequences are immediate.",
+          "That environment taught me to stay calm, diagnose carefully, and understand how one change affects everything connected to it."
+        ]
       },
       {
-        "title": "Clear execution",
-        "body": "I work in a structured way, communicate decisions early, and prefer fewer outputs that are solid over many without a foundation."
+        "title": "What that background gave me",
+        "paragraphs": [
+          "It gave me systems thinking and operational discipline early. I learned to ask what fails, why it fails, and what recovery requires.",
+          "Those habits now carry into software work as attention to structure, reliability, and long-term maintainability."
+        ]
       },
       {
-        "title": "Learning mindset",
-        "body": "I make progress visible, ask for targeted feedback, and use it to raise both technical quality and delivery pace."
+        "title": "Why software is the direction now",
+        "paragraphs": [
+          "The move toward software was not a hard pivot. It was a natural next step from understanding systems to building them more directly.",
+          "I am now focused on .NET, TypeScript, React, and API-driven development while keeping that infrastructure-aware lens."
+        ]
+      },
+      {
+        "title": "What kind of builder I want to become",
+        "paragraphs": [
+          "I want to build software that is technically clear, operationally responsible, and honest about scope.",
+          "For me, a serious body of work means consistent quality, well-explained decisions, and steady progression over hype."
+        ]
       }
     ],
-    "photoNote": "Photography moment, 2024."
+    "personalTitle": "Personal context",
+    "personal": "I am from the Netherlands and currently studying HBO Informatica at Avans Hogeschool, after completing MBO Level 4 in IT. Day to day, I am focused on building work that is honest about where I am now and deliberate about where I am going."
   },
   "projects": {
-    "headline": "Projects with quality in focus.",
-    "description": "Selections of recent builds and concepts currently being expanded.",
-    "selectedLabel": "Selected builds",
-    "inDevelopmentLabel": "In development",
-    "selected": [
+    "eyebrow": "Projects",
+    "headline": "Selected builds and technical explorations.",
+    "opening": "The work shown here is real. Some entries are complete, some are still being documented, and some are actively being built.",
+    "fields": {
+      "what": "What it is",
+      "why": "Why it was built or explored",
+      "tech": "Technologies",
+      "outcome": "What was learned or addressed",
+      "status": "Status",
+      "link": "More detail"
+    },
+    "categories": [
       {
-        "name": "Portfolio v2",
-        "category": "Frontend engineering",
-        "year": "2026",
-        "href": "https://github.com/DanielvG-IT/Portfolio",
-        "linkLabel": "Repository"
+        "label": "Selected builds",
+        "intro": "Core product-oriented builds shaping the current portfolio direction.",
+        "items": [
+          {
+            "title": "StrengthSuite",
+            "what": "A gym access system evolving into a broader gym management platform.",
+            "why": "To build software that connects product experience with real operational environments, secure access flows, and physical infrastructure.",
+            "technologies": ["C# / .NET", "Next.js", "React Native", "Rust"],
+            "outcome": "Demonstrates full-stack systems thinking across backend services, web, mobile, and hardware-adjacent edge logic.",
+            "status": "Currently building",
+            "href": "",
+            "linkLabel": ""
+          },
+          {
+            "title": "SynqWealth",
+            "what": "A personal finance application focused on giving users a clear view of their financial world.",
+            "why": "To create practical software for real-life financial visibility across net worth, spending, savings, investments, assets, budgets, goals, and partner sharing.",
+            "technologies": [
+              "Domain modeling",
+              "Financial tracking flows",
+              "Product architecture"
+            ],
+            "outcome": "Strengthens product-oriented engineering with structured data, clear user journeys, and useful day-to-day functionality.",
+            "status": "In progress",
+            "href": "",
+            "linkLabel": ""
+          }
+        ]
       },
       {
-        "name": "Support Workflow Toolkit",
-        "category": "Automation",
-        "year": "2025",
-        "href": "https://github.com",
-        "linkLabel": "Overview"
-      }
-    ],
-    "inDevelopment": [
+        "label": "Technical explorations",
+        "intro": "Backend, security, and infrastructure-oriented work focused on reusable technical foundations.",
+        "items": [
+          {
+            "title": "Aegis.Auth",
+            "what": "A public .NET / C# authentication and authorization library.",
+            "why": "To provide plug-and-play identity functionality and build reusable backend tooling rather than only user-facing apps.",
+            "technologies": [".NET", "C#", "Authentication", "Authorization"],
+            "outcome": "Reflects growing focus on backend security concerns and foundational developer tooling.",
+            "status": "In progress",
+            "href": "",
+            "linkLabel": ""
+          }
+        ]
+      },
       {
-        "name": "Infra Notes OS",
-        "category": "Knowledge system",
-        "year": "2026",
-        "href": "",
-        "linkLabel": ""
+        "label": "In progress",
+        "intro": "Infrastructure-aware systems currently being shaped into practical products.",
+        "items": [
+          {
+            "title": "OpenCaptive",
+            "what": "An open-source captive portal solution for customizable business access experiences.",
+            "why": "To connect networking and operational environments with productized software flows like login, payment, and business-specific access management.",
+            "technologies": [
+              "Captive portal architecture",
+              "Access flow design",
+              "Operational networking context"
+            ],
+            "outcome": "Expands infrastructure roots into software that bridges network control and user-facing product behavior.",
+            "status": "Early stage",
+            "href": "",
+            "linkLabel": ""
+          }
+        ]
       }
     ],
-    "placeholder": {
-      "name": "Project details incoming",
-      "category": "In progress",
-      "year": "Soon",
-      "description": "New projects will appear here as structured rows once they are ready for publication."
+    "empty": {
+      "title": "Details being prepared",
+      "body": "This entry is intentionally held until the scope and implementation are ready to publish."
     }
   },
   "journey": {
     "eyebrow": "Journey",
-    "headline": "From support toward software engineering.",
-    "intro": "My path moves from operational IT into focused software delivery. Each step has sharpened how I design and build.",
-    "band": [
-      {
-        "label": "Start",
-        "title": "IT support and operations",
-        "body": "Practical grounding in incidents, systems, and ownership."
-      },
-      {
-        "label": "Focus",
-        "title": "Software development studies",
-        "body": "A deliberate shift toward building, modeling, and iterating."
-      },
-      {
-        "label": "Direction",
-        "title": "Engineering with foundations",
-        "body": "Quality, clarity, and durable decisions as a baseline."
-      }
-    ],
+    "headline": "From infrastructure roots to software development.",
+    "opening": "This is not a resume. It is a progression where each stage built the next one.",
     "entries": [
       {
-        "year": "2023",
-        "title": "First step in IT support",
-        "description": "I worked on support requests, basic administration, and user problems. This taught me to recognize failure patterns in systems and become disciplined in structured troubleshooting.",
-        "relevance": "Relevant because: this is where I learned how essential stability and clear documentation are."
+        "period": "2019-2022",
+        "title": "IT systems foundation",
+        "narrative": "My technical base started in support and infrastructure environments. I worked close to Linux systems, networking, troubleshooting, and practical operations. That context taught me to think in dependencies, failure paths, and operational consequences.",
+        "forward": "This stage built the habits that still shape how I approach software."
       },
       {
-        "year": "2024",
-        "title": "Shift toward software development",
-        "description": "During my studies, my interest moved from operational fixes to design and implementation. I started building personal projects and making technical choices explicit.",
-        "relevance": "Relevant because: this step connected my technical base with product-oriented thinking."
+        "period": "2022-2023",
+        "title": "Growing technical awareness",
+        "narrative": "Working with infrastructure made software questions more visible. I became increasingly interested in why applications were designed the way they were and how better structure could prevent recurring problems. That curiosity bridged operations and software direction.",
+        "forward": "The focus started shifting from fixing systems to building them."
       },
       {
-        "year": "2025-2026",
-        "title": "Portfolio and focused builds",
-        "description": "I now build projects with clear scope, consistent structure, and attention to maintainability. Not only to show what I can build, but also how I work.",
-        "relevance": "Relevant because: it forms a strong foundation for a professional software engineering role."
+        "period": "2023-2024",
+        "title": "Formal software development education",
+        "narrative": "After completing MBO Level 4 in IT, I started HBO Informatica at Avans Hogeschool. Structured software education gave me stronger models for architecture, implementation, and communication. The infrastructure background changed how quickly those concepts became practical.",
+        "forward": "Software became the primary direction, built on an existing technical base."
+      },
+      {
+        "period": "2024-2025",
+        "title": "Projects and technical explorations",
+        "narrative": "Learning started turning into visible output through projects and exploration work. I began documenting decisions more clearly and evaluating trade-offs more intentionally. The goal shifted from finishing tasks to building coherent technical work.",
+        "forward": "This stage produced the first portfolio structure and technical references."
+      },
+      {
+        "period": "Current",
+        "title": "Early-career, software-forward",
+        "narrative": "I am currently focused on .NET, TypeScript, React, and API-driven work while continuing to deepen systems awareness. The portfolio is still growing, and that growth is intentional. The next horizon is internship-level software engineering where foundation and direction can compound.",
+        "forward": "The trajectory is clear: foundation first, software forward."
       }
     ]
   },
   "contact": {
-    "intro": "Open to internships, junior opportunities, and collaborations where software quality and ownership matter.",
+    "eyebrow": "Contact",
+    "headline": "Open to the right conversations.",
+    "intro": "I am open to internship enquiries, technical discussions, and collaborations that fit my current stage of development.",
+    "welcome": [
+      "Internship opportunities in software development.",
+      "Conversations about .NET, TypeScript, React, APIs, and systems-aware engineering.",
+      "Collaborative work where learning, structure, and technical quality are central."
+    ],
+    "emailLabel": "Email",
     "email": "hello@danielvanginneken.nl",
-    "links": {
-      "linkedin": "https://www.linkedin.com",
-      "github": "https://github.com/DanielvG-IT"
-    },
-    "availability": "Available for conversations from Q2 2026."
+    "linkedinLabel": "LinkedIn",
+    "linkedin": "https://www.linkedin.com",
+    "response": "I respond to relevant professional enquiries, usually within two working days."
   }
 }

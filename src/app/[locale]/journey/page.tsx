@@ -1,7 +1,5 @@
-import clsx from "clsx";
 import { notFound } from "next/navigation";
 
-import TimelineEntry from "@/components/sections/TimelineEntry";
 import MotionReveal from "@/components/ui/MotionReveal";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { getMessages, isLocale } from "@/lib/i18n";
@@ -20,9 +18,9 @@ export default async function JourneyPage({ params }: JourneyPageProps) {
   const journey = getMessages(locale).journey;
 
   return (
-    <section className="px-page-x-sm pb-section-sm pt-[140px] md:px-page-x">
+    <section className="px-page-x-sm pb-24 pt-[130px] md:px-page-x md:pt-[150px]">
       <div className="mx-auto max-w-[1280px]">
-        <div className="grid gap-10 md:grid-cols-[1fr_1fr] md:gap-16">
+        <div className="grid gap-10 md:grid-cols-[7fr_5fr] md:gap-16">
           <MotionReveal
             delay={0.03}
             y={16}
@@ -40,57 +38,34 @@ export default async function JourneyPage({ params }: JourneyPageProps) {
             blur={6}
             className="overflow-hidden md:pt-[52px]">
             <p className="max-w-[560px] text-body-md text-ink-2">
-              {journey.intro}
+              {journey.opening}
             </p>
           </MotionReveal>
         </div>
 
-        <MotionReveal
-          delay={0.14}
-          y={20}
-          blur={7}
-          className="mt-16 border border-edge bg-surface px-6 py-8 md:px-10 md:py-10">
-          <div className="grid gap-6 md:grid-cols-3 md:gap-0">
-            {journey.band.map((item, index) => (
-              <MotionReveal
-                key={item.title}
-                delay={0.18 + index * 0.07}
-                y={14}
-                blur={5}
-                className={clsx(
-                  "md:px-7",
-                  index > 0 &&
-                    "border-t border-edge pt-6 md:border-l md:border-t-0 md:pt-0",
-                  index === 0 && "md:pl-0",
-                  index === journey.band.length - 1 && "md:pr-0",
-                )}>
-                <article>
-                  <SectionLabel label={item.label} />
-                  <h2 className="mt-4 text-[17px] font-medium text-ink">
-                    {item.title}
-                  </h2>
-                  <p className="mt-2 text-[15px] leading-[1.65] text-ink-2">
-                    {item.body}
-                  </p>
-                </article>
-              </MotionReveal>
-            ))}
-          </div>
-        </MotionReveal>
-
-        <div className="mt-16">
+        <ol className="mt-16 border-l border-edge pl-7">
           {journey.entries.map((entry, index) => (
-            <TimelineEntry
-              key={`${entry.year}-${entry.title}`}
-              year={entry.year}
-              title={entry.title}
-              description={entry.description}
-              relevance={entry.relevance}
-              animationDelay={0.04 + index * 0.04}
-            />
+            <MotionReveal
+              key={`${entry.period}-${entry.title}`}
+              delay={0.12 + index * 0.04}
+              y={14}
+              blur={6}>
+              <li className="relative pb-12 last:pb-1">
+                <span className="absolute -left-[34px] top-2 h-3 w-3 rounded-full border border-slate bg-ground" />
+                <p className="text-[12px] uppercase tracking-[0.13em] text-slate">
+                  {entry.period}
+                </p>
+                <h2 className="mt-3 font-display text-display-md font-normal text-ink">
+                  {entry.title}
+                </h2>
+                <p className="mt-4 max-w-[820px] text-body-md text-ink-2">
+                  {entry.narrative}
+                </p>
+                <p className="mt-4 text-[14px] text-slate">{entry.forward}</p>
+              </li>
+            </MotionReveal>
           ))}
-          <div className="border-t border-edge" />
-        </div>
+        </ol>
       </div>
     </section>
   );

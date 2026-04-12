@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Portfolio
 
-## Getting Started
+This portfolio runs on Next.js 16 with the App Router.
 
-First, run the development server:
+## Local Development
+
+Install dependencies and start the dev server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Docker
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This repo ships with a production-ready multi-stage `Dockerfile` that uses Next.js `output: "standalone"` for a smaller runtime image.
 
-## Learn More
+Build the image:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+docker build \
+  --build-arg NEXT_PUBLIC_SITE_URL=https://danielvanginneken.nl \
+  -t portfolio .
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Run the container:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+docker run --rm -p 3000:3000 portfolio
+```
 
-## Deploy on Vercel
+The app listens on port `3000` inside the container.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Plesk / Plain Node Deploy
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+If you just want to pull the repo on a server, install dependencies, and run the standalone server directly, use:
+
+```bash
+npm install
+npm run build:standalone
+npm run start:standalone
+```
+
+`build:standalone` runs `next build` and then copies `public` and `.next/static` into `.next/standalone` so `.next/standalone/server.js` can serve the app correctly.
+
+## Environment Notes
+
+`NEXT_PUBLIC_SITE_URL` is used for canonical URLs, sitemap output, robots metadata, and Open Graph URLs. Because it is a `NEXT_PUBLIC_` variable, provide it at build time when building the Docker image if you want production metadata to match the deployed domain. If you omit it, the app falls back to `https://danielvanginneken.nl`.
+
+## Production Build
+
+If you want to verify the production build without Docker:
+
+```bash
+npm run build
+npm run start
+```
