@@ -21,7 +21,7 @@ export default async function HomePage({ params }: HomePageProps) {
   const home = getMessages(locale).home;
 
   return (
-    <div className="px-page-x-sm pb-20 pt-[120px] md:px-page-x md:pb-28 md:pt-[150px]">
+    <div className="px-page-x-sm pb-20 pt-[96px] md:px-page-x md:pb-28 md:pt-[124px]">
       <div className="mx-auto max-w-[1280px]">
         <section className="grid items-end gap-12 md:grid-cols-[56fr_44fr] md:gap-16">
           <div>
