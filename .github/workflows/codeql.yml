@@ -1,0 +1,49 @@
+# CodeQL code scanning (advanced setup)
+# https://docs.github.com/code-security/code-scanning/creating-an-advanced-setup-for-code-scanning
+#
+# build-mode: none is correct for JavaScript/TypeScript — CodeQL analyzes the
+# source directly without a build step.
+
+name: "CodeQL Advanced"
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  schedule:
+    - cron: "45 7 * * 5" # weekly, Fridays 07:45 UTC
+
+jobs:
+  analyze:
+    name: Analyze (${{ matrix.language }})
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write # upload scan results
+      packages: read # fetch private CodeQL packs
+      actions: read # required for private repos
+      contents: read
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - language: javascript-typescript
+            build-mode: none
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v4
+        with:
+          languages: ${{ matrix.language }}
+          build-mode: ${{ matrix.build-mode }}
+          # For deeper analysis, prefix with "+" to add to the default suite:
+          # queries: security-extended,security-and-quality
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v4
+        with:
+          category: "/language:${{ matrix.language }}"
