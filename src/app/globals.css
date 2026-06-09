@@ -81,18 +81,18 @@
 /* ─── Liquid Glass utility ────────────────────────────────────────────────── */
 
 /*
-  Three progressive layers:
-  1. All browsers:     semi-opaque background (via --glass-bg)
-  2. All modern browsers (Safari, Firefox, Chrome): blur declared directly on
-     the class — no @supports wrapper needed. Old browsers that don't support
-     backdrop-filter simply show the opaque background. Written as both
-     -webkit-backdrop-filter and backdrop-filter because PostCSS/autoprefixer
-     was stripping the unprefixed version from inside @supports blocks, which
-     broke Firefox (which only supports the unprefixed form).
-  3. SVG refraction (Chromium only): @supports guards this correctly because
-     url() inside backdrop-filter isn't auto-prefixed, so both forms survive.
-     NOTE: @supports parses url() as valid in Safari too — test on real Safari
-     (Phase 2 verification) to confirm the refraction doesn't break the blur.
+  Two layers:
+  1. All browsers: semi-opaque background (via --glass-bg).
+  2. Modern browsers: backdrop blur + saturation. Written as both
+     -webkit-backdrop-filter and backdrop-filter because PostCSS was stripping
+     the unprefixed form from inside @supports blocks, breaking Firefox.
+
+  NOTE: a third layer used to apply backdrop-filter: url('#liquid-glass') — an
+  feTurbulence + feDisplacementMap SVG refraction. It was removed for
+  performance: that filter regenerates fractal noise on every scroll frame for
+  every glass card, which tanked scroll FPS. The specular rim-light below
+  carries the "liquid glass" look at a fraction of the cost. Keep blur modest;
+  backdrop-filter repaints on scroll and scales poorly with radius × instances.
 */
 @layer utilities {
   .liquid-glass {
@@ -101,17 +101,8 @@
     box-shadow: var(--glass-shadow);
     position: relative;
     overflow: hidden;
-    /* Layer 2 — applied directly, not inside @supports, to ensure Firefox
-       gets the unprefixed form and Safari gets the webkit form */
-    -webkit-backdrop-filter: blur(20px) saturate(1.6);
-    backdrop-filter: blur(20px) saturate(1.6);
-  }
-
-  /* Layer 3: SVG displacement-map refraction — Chromium only */
-  @supports (backdrop-filter: url('#x')) {
-    .liquid-glass {
-      backdrop-filter: url('#liquid-glass') blur(18px) saturate(1.6);
-    }
+    -webkit-backdrop-filter: blur(14px) saturate(1.5);
+    backdrop-filter: blur(14px) saturate(1.5);
   }
 
   /* Specular rim-light: diagonal highlight simulating a glass surface edge */

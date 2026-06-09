@@ -118,42 +118,6 @@ export default async function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       </head>
       <body className="min-h-full bg-bg text-text font-sans">
-        {/* SVG filter definition for Liquid Glass refraction (Chromium only).
-            Must live in the DOM so backdrop-filter: url('#liquid-glass') resolves. */}
-        <svg
-          aria-hidden="true"
-          focusable="false"
-          style={{ position: "absolute", width: 0, height: 0, overflow: "hidden" }}
-        >
-          <defs>
-            <filter
-              id="liquid-glass"
-              x="-10%"
-              y="-10%"
-              width="120%"
-              height="120%"
-              colorInterpolationFilters="sRGB"
-            >
-              <feTurbulence
-                type="fractalNoise"
-                baseFrequency="0.65"
-                numOctaves="3"
-                seed="2"
-                stitchTiles="stitch"
-                result="noise"
-              />
-              <feGaussianBlur stdDeviation="0.4" in="noise" result="blurred-noise" />
-              <feDisplacementMap
-                in="SourceGraphic"
-                in2="blurred-noise"
-                scale="12"
-                xChannelSelector="R"
-                yChannelSelector="G"
-              />
-            </filter>
-          </defs>
-        </svg>
-
         <ThemeProvider>
           <JsonLd id="person-schema" data={personJsonLd()} />
           <JsonLd id="website-schema" data={websiteJsonLd()} />
