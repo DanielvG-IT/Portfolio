@@ -1,11 +1,22 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import MotionReveal from "@/components/ui/MotionReveal";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { getMessages, isLocale } from "@/lib/i18n";
+import { generatePageMetadata } from "@/lib/site-config";
 
 interface AboutPageProps {
   params: Promise<{ locale: string }>;
+}
+
+export async function generateMetadata({
+  params,
+}: AboutPageProps): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) return {};
+  const { about } = getMessages(locale);
+  return generatePageMetadata(locale, "/about", about.headline, about.opening);
 }
 
 export default async function AboutPage({ params }: AboutPageProps) {

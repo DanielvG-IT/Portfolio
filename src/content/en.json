@@ -14,17 +14,19 @@
       "subline": "Early-career, systems-aware, and moving deliberately deeper into software development.",
       "ctaPrimary": "View the work",
       "ctaSecondary": "Read my story",
-      "portraitNote": "Portrait, 2026."
+      "portraitNote": "Portrait, 2026.",
+      "name": "Daniël",
+      "roles": ["Software developer", "Systems thinker", ".NET engineer", "Infrastructure-aware"]
     },
     "foundation": {
-      "heading": "A different kind of starting point.",
+      "heading": "A bit about me",
       "paragraphs": [
         "Most developers start with code. I started with infrastructure: live systems, support environments, and technical operations where reliability is not optional.",
         "That foundation still shapes how I build software. I think about dependencies, failure modes, and maintainability as part of the build process, not as an afterthought."
       ]
     },
     "capabilities": {
-      "heading": "What I work with",
+      "heading": "What I build",
       "intro": "An honest map of current areas, foundations, and active growth.",
       "groups": [
         {
@@ -65,18 +67,18 @@
       ]
     },
     "work": {
-      "heading": "Where to look next",
-      "intro": "The portfolio is still growing, but the direction is already clear: practical systems, product ambition, and infrastructure-aware engineering.",
+      "heading": "Featured projects",
+      "intro": "The portfolio is still growing, but the direction is already clear: infrastructure-aware engineering, backend security, and software that solves real operational problems.",
       "references": [
         {
-          "title": "StrengthSuite",
-          "summary": "A multi-layer gym platform in development that connects backend services, web and mobile interfaces, and Rust-based edge devices for physical access control.",
-          "status": "Currently building"
+          "title": "OpenCaptive",
+          "summary": "An open-source captive portal platform connecting networking fundamentals with SaaS architecture — authentication flows, multi-tenancy, and access management built from an infrastructure-first perspective.",
+          "status": "Early-stage architecture"
         },
         {
           "title": "Aegis.Auth",
-          "summary": "A public .NET authentication and authorization library focused on reusable, plug-and-play identity functionality.",
-          "status": "In progress"
+          "summary": "A reusable .NET authentication and authorization library focused on JWT, RBAC, and claims-based identity — security tooling built for developers rather than end users.",
+          "status": "Research and development"
         }
       ],
       "cta": "Explore the projects"
@@ -122,77 +124,120 @@
   "projects": {
     "eyebrow": "Projects",
     "headline": "Selected builds and technical explorations.",
-    "opening": "The work shown here is real. Some entries are complete, some are still being documented, and some are actively being built.",
+    "opening": "Most of these projects are currently in the architecture, research, or early implementation phase. I use them as vehicles to explore software engineering, product development, networking, security, and business-oriented problem solving.",
     "fields": {
       "what": "What it is",
-      "why": "Why it was built or explored",
+      "why": "Why it was built",
       "tech": "Technologies",
-      "outcome": "What was learned or addressed",
+      "outcome": "What I learned",
       "status": "Status",
       "link": "More detail"
     },
     "categories": [
       {
-        "label": "Selected builds",
-        "intro": "Core product-oriented builds shaping the current portfolio direction.",
+        "label": "Featured project",
+        "intro": "The project that best represents my background, technical focus, and engineering depth.",
         "items": [
           {
-            "title": "StrengthSuite",
-            "what": "A gym access system evolving into a broader gym management platform.",
-            "why": "To build software that connects product experience with real operational environments, secure access flows, and physical infrastructure.",
-            "technologies": ["C# / .NET", "Next.js", "React Native", "Rust"],
-            "outcome": "Demonstrates full-stack systems thinking across backend services, web, mobile, and hardware-adjacent edge logic.",
-            "status": "Currently building",
+            "title": "OpenCaptive",
+            "what": "OpenCaptive is an open-source captive portal platform that allows organizations to build customized network access experiences. It aims to provide businesses with flexible authentication, branding, and access management capabilities without relying on closed, vendor-locked systems.",
+            "why": "My background in networking and systems administration sparked an interest in how users interact with network infrastructure. OpenCaptive explores the intersection between networking, software engineering, and business operations — a natural extension of my MBO background toward building productized software.",
+            "technologies": [
+              ".NET",
+              "ASP.NET Core",
+              "Captive Portal Concepts",
+              "Authentication Flows",
+              "Networking Fundamentals",
+              "API Design",
+              "Multi-Tenant Architecture Research",
+              "Infrastructure Integration"
+            ],
+            "outcome": [
+              "Network access control concepts",
+              "Designing software around infrastructure systems",
+              "Multi-tenant architecture considerations",
+              "Authentication and user onboarding flows",
+              "Productizing traditionally infrastructure-focused solutions"
+            ],
+            "status": "Early-stage architecture and planning",
+            "href": "",
+            "linkLabel": ""
+          }
+        ]
+      },
+      {
+        "label": "Selected builds",
+        "intro": "Backend security tooling and a platform that translates systems thinking into real product problems.",
+        "items": [
+          {
+            "title": "Aegis.Auth",
+            "what": "Aegis.Auth is a reusable authentication and authorization library for .NET applications. It aims to simplify identity management by providing common security functionality through a developer-friendly package.",
+            "why": "Authentication is a requirement for nearly every modern application. Instead of rebuilding the same identity logic repeatedly, I wanted to explore creating a reusable security-focused foundation that could be integrated into multiple projects.",
+            "technologies": [
+              "C#",
+              ".NET",
+              "JWT Authentication",
+              "Role-Based Access Control (RBAC)",
+              "Claims-Based Authorization",
+              "Security Best Practices",
+              "NuGet Package Development"
+            ],
+            "outcome": [
+              "Identity and access management concepts",
+              "Secure token handling and session architecture",
+              "Authorization architecture patterns",
+              "Reusable library design",
+              "Building software for other developers to consume"
+            ],
+            "status": "Research and development",
             "href": "",
             "linkLabel": ""
           },
           {
+            "title": "StrengthSuite",
+            "what": "StrengthSuite is a gym management platform designed to combine member administration, subscriptions, access control, and training-related functionality into a single system. The long-term vision is to connect software directly with physical gym infrastructure such as entrance gates, QR access, and membership validation.",
+            "why": "The project started from an interest in solving real operational challenges faced by gyms while exploring how software can interact with physical environments. Rather than building another generic CRUD application, the goal was to design a platform that supports actual business workflows and secure facility access.",
+            "technologies": [
+              "C# / .NET",
+              "ASP.NET Core Web API",
+              "Next.js",
+              "React Native",
+              "PostgreSQL",
+              "REST APIs",
+              "Authentication & Authorization",
+              "Edge / Hardware Integration Research"
+            ],
+            "outcome": [
+              "Designing software around real-world business processes",
+              "Building scalable backend architectures",
+              "Managing authentication and role-based permissions",
+              "Connecting digital systems to physical infrastructure",
+              "Balancing product requirements with technical constraints"
+            ],
+            "status": "Actively being designed and prototyped",
+            "href": "",
+            "linkLabel": ""
+          }
+        ]
+      },
+      {
+        "label": "Early concept",
+        "intro": "An idea not yet in active development, kept here to show the product thinking direction.",
+        "items": [
+          {
             "title": "SynqWealth",
-            "what": "A personal finance application focused on giving users a clear view of their financial world.",
-            "why": "To create practical software for real-life financial visibility across net worth, spending, savings, investments, assets, budgets, goals, and partner sharing.",
+            "what": "A personal finance platform concept exploring how income, expenses, investments, savings, and net worth can be unified into a single honest financial view.",
+            "why": "Financial software requires careful domain design before implementation. This project is currently focused on mapping out the data architecture and domain model rather than rushing to build features.",
             "technologies": [
-              "Domain modeling",
-              "Financial tracking flows",
-              "Product architecture"
+              "Domain-Driven Design",
+              "Financial Data Modeling",
+              "Product Architecture"
             ],
-            "outcome": "Strengthens product-oriented engineering with structured data, clear user journeys, and useful day-to-day functionality.",
-            "status": "In progress",
-            "href": "",
-            "linkLabel": ""
-          }
-        ]
-      },
-      {
-        "label": "Technical explorations",
-        "intro": "Backend, security, and infrastructure-oriented work focused on reusable technical foundations.",
-        "items": [
-          {
-            "title": "Aegis.Auth",
-            "what": "A public .NET / C# authentication and authorization library.",
-            "why": "To provide plug-and-play identity functionality and build reusable backend tooling rather than only user-facing apps.",
-            "technologies": [".NET", "C#", "Authentication", "Authorization"],
-            "outcome": "Reflects growing focus on backend security concerns and foundational developer tooling.",
-            "status": "In progress",
-            "href": "",
-            "linkLabel": ""
-          }
-        ]
-      },
-      {
-        "label": "In progress",
-        "intro": "Infrastructure-aware systems currently being shaped into practical products.",
-        "items": [
-          {
-            "title": "OpenCaptive",
-            "what": "An open-source captive portal solution for customizable business access experiences.",
-            "why": "To connect networking and operational environments with productized software flows like login, payment, and business-specific access management.",
-            "technologies": [
-              "Captive portal architecture",
-              "Access flow design",
-              "Operational networking context"
+            "outcome": [
+              "Modeling complex financial domains",
+              "Designing data structures for long-term scalability"
             ],
-            "outcome": "Expands infrastructure roots into software that bridges network control and user-facing product behavior.",
-            "status": "Early stage",
+            "status": "Concept and data-model exploration — not yet in active development",
             "href": "",
             "linkLabel": ""
           }
@@ -253,7 +298,7 @@
     "emailLabel": "Email",
     "email": "hello@danielvanginneken.nl",
     "linkedinLabel": "LinkedIn",
-    "linkedin": "https://www.linkedin.com",
+    "linkedin": "https://www.linkedin.com/in/danielvanginneken",
     "response": "I respond to relevant professional enquiries, usually within two working days."
   }
 }

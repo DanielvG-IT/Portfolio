@@ -1,11 +1,27 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import MotionReveal from "@/components/ui/MotionReveal";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { getMessages, isLocale } from "@/lib/i18n";
+import { generatePageMetadata } from "@/lib/site-config";
 
 interface JourneyPageProps {
   params: Promise<{ locale: string }>;
+}
+
+export async function generateMetadata({
+  params,
+}: JourneyPageProps): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) return {};
+  const { journey } = getMessages(locale);
+  return generatePageMetadata(
+    locale,
+    "/journey",
+    journey.headline,
+    journey.opening,
+  );
 }
 
 export default async function JourneyPage({ params }: JourneyPageProps) {

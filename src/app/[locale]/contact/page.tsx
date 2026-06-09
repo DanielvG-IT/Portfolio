@@ -1,11 +1,27 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import MotionReveal from "@/components/ui/MotionReveal";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { getMessages, isLocale } from "@/lib/i18n";
+import { generatePageMetadata } from "@/lib/site-config";
 
 interface ContactPageProps {
   params: Promise<{ locale: string }>;
+}
+
+export async function generateMetadata({
+  params,
+}: ContactPageProps): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) return {};
+  const { contact } = getMessages(locale);
+  return generatePageMetadata(
+    locale,
+    "/contact",
+    contact.headline,
+    contact.intro,
+  );
 }
 
 export default async function ContactPage({ params }: ContactPageProps) {

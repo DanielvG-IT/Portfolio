@@ -1,27 +1,76 @@
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap");
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@config "../../tailwind.config.ts";
 
+/* ─── Semantic design tokens ──────────────────────────────────────────────── */
+
+/*
+  Why hex in vars, not channels:
+  Tailwind's `/NN` opacity modifier only works if the Tailwind config uses
+  `rgb(var(--x) / <alpha-value>)` — which requires channel-only vars and breaks
+  any direct CSS property that reads the var. Instead we define separate
+  `--color-*-overlay` vars wherever pre-composed transparency is needed.
+*/
 @layer base {
+  :root {
+    /* Base colors */
+    --color-bg:               #f5f7fa;
+    --color-bg-elevated:      #ffffff;
+    --color-text:             #14181f;
+    --color-text-secondary:   #4b5565;
+    --color-text-muted:       #7e8898;
+    --color-accent:           #0a84ff;
+    --color-accent-subtle:    rgba(10, 132, 255, 0.10);
+    --color-border-subtle:    rgba(0, 0, 0, 0.08);
+
+    /* Pre-composed transparency — use bg-[var(--color-bg-overlay)] in JSX */
+    --color-bg-overlay:       rgba(245, 247, 250, 0.92);
+    --color-bg-overlay-heavy: rgba(245, 247, 250, 0.97);
+
+    /* Glass surface */
+    --glass-bg:     rgba(255, 255, 255, 0.72);
+    --glass-border: rgba(255, 255, 255, 0.90);
+    --glass-rim:    rgba(255, 255, 255, 0.22);
+    --glass-shadow: 0 4px 24px rgba(20, 24, 31, 0.08), 0 1px 3px rgba(20, 24, 31, 0.05);
+  }
+
+  .dark {
+    --color-bg:               #0c0c0e;
+    --color-bg-elevated:      #1c1c1e;
+    --color-text:             #f4f4f5;
+    --color-text-secondary:   #a1a1aa;
+    --color-text-muted:       #71717a;
+    --color-accent:           #0a84ff;
+    --color-accent-subtle:    rgba(10, 132, 255, 0.18);
+    --color-border-subtle:    rgba(255, 255, 255, 0.10);
+
+    --color-bg-overlay:       rgba(12, 12, 14, 0.92);
+    --color-bg-overlay-heavy: rgba(12, 12, 14, 0.97);
+
+    --glass-bg:     rgba(255, 255, 255, 0.07);
+    --glass-border: rgba(255, 255, 255, 0.14);
+    --glass-rim:    rgba(255, 255, 255, 0.10);
+    --glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+
   html {
-    background-color: #f3eee4;
-    color: #1c1a17;
+    background-color: var(--color-bg);
+    color: var(--color-text);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   body {
     min-height: 100%;
-    background: #f3eee4;
-    color: #1c1a17;
-    font-family: "Manrope", system-ui, sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-inter), system-ui, sans-serif;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 
   ::selection {
-    background: rgba(43, 72, 101, 0.18);
-    color: #1c1a17;
+    background: rgba(10, 132, 255, 0.2);
+    color: var(--color-text);
   }
 
   * {
@@ -29,91 +78,165 @@
   }
 }
 
-@keyframes pageFade {
-  from {
-    opacity: 0;
+/* ─── Liquid Glass utility ────────────────────────────────────────────────── */
+
+/*
+  Three progressive layers:
+  1. All browsers:     semi-opaque background (via --glass-bg)
+  2. All modern browsers (Safari, Firefox, Chrome): blur declared directly on
+     the class — no @supports wrapper needed. Old browsers that don't support
+     backdrop-filter simply show the opaque background. Written as both
+     -webkit-backdrop-filter and backdrop-filter because PostCSS/autoprefixer
+     was stripping the unprefixed version from inside @supports blocks, which
+     broke Firefox (which only supports the unprefixed form).
+  3. SVG refraction (Chromium only): @supports guards this correctly because
+     url() inside backdrop-filter isn't auto-prefixed, so both forms survive.
+     NOTE: @supports parses url() as valid in Safari too — test on real Safari
+     (Phase 2 verification) to confirm the refraction doesn't break the blur.
+*/
+@layer utilities {
+  .liquid-glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    position: relative;
+    overflow: hidden;
+    /* Layer 2 — applied directly, not inside @supports, to ensure Firefox
+       gets the unprefixed form and Safari gets the webkit form */
+    -webkit-backdrop-filter: blur(20px) saturate(1.6);
+    backdrop-filter: blur(20px) saturate(1.6);
   }
 
-  to {
-    opacity: 1;
+  /* Layer 3: SVG displacement-map refraction — Chromium only */
+  @supports (backdrop-filter: url('#x')) {
+    .liquid-glass {
+      backdrop-filter: url('#liquid-glass') blur(18px) saturate(1.6);
+    }
   }
+
+  /* Specular rim-light: diagonal highlight simulating a glass surface edge */
+  .liquid-glass::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      145deg,
+      var(--glass-rim) 0%,
+      rgba(255, 255, 255, 0.04) 40%,
+      transparent 65%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Card content must sit above the rim-light layer */
+  .liquid-glass > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* ─── Hero gradient mesh ──────────────────────────────────────────────────── */
+
+/*
+  Wrapped in prefers-reduced-motion: no-preference so users who have asked
+  their OS to reduce motion get a static gradient instead.
+*/
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes mesh-drift-1 {
+    0%, 100% { transform: translate(0px, 0px) scale(1); }
+    33%       { transform: translate(60px, -40px) scale(1.08); }
+    66%       { transform: translate(-30px, 30px) scale(0.96); }
+  }
+
+  @keyframes mesh-drift-2 {
+    0%, 100% { transform: translate(0px, 0px) scale(1); }
+    40%       { transform: translate(-50px, 60px) scale(1.1); }
+    70%       { transform: translate(40px, -20px) scale(0.94); }
+  }
+
+  @keyframes mesh-drift-3 {
+    0%, 100% { transform: translate(0px, 0px) scale(1); }
+    50%       { transform: translate(30px, 50px) scale(1.05); }
+  }
+
+  .mesh-orb-1 { animation: mesh-drift-1 28s ease-in-out infinite; }
+  .mesh-orb-2 { animation: mesh-drift-2 36s ease-in-out infinite; }
+  .mesh-orb-3 { animation: mesh-drift-3 22s ease-in-out infinite; }
+}
+
+/* ─── Role cycling (hero subtitle) ───────────────────────────────────────── */
+
+/*
+  The role container needs a height anchor so absolute-positioned spans don't
+  collapse it. A visually-hidden longest-string span (aria-hidden) holds the
+  space; visible spans cycle in/out with opacity + translate.
+*/
+@keyframes role-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes role-out {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-8px); }
+}
+
+/* ─── Page animations ─────────────────────────────────────────────────────── */
+@keyframes pageFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 @keyframes softPulse {
-  0%,
-  100% {
-    opacity: 0.72;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: 1;
-    transform: scale(1.18);
-  }
+  0%, 100% { opacity: 0.72; transform: scale(1); }
+  50%       { opacity: 1;    transform: scale(1.18); }
 }
 
+/* ─── Legacy glass utilities (kept for non-homepage pages) ───────────────── */
 @layer utilities {
   .glass-surface {
-    background: rgba(248, 244, 238, 0.9);
-    border: 1px solid rgba(212, 206, 196, 0.9);
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(215, 222, 232, 0.95);
+    box-shadow: 0 2px 8px rgba(20, 24, 31, 0.05);
   }
 
   .ios-glass {
-    background:
-      linear-gradient(
-        145deg,
-        rgba(255, 255, 255, 0.56),
-        rgba(255, 255, 255, 0.22)
-      ),
-      rgba(237, 245, 255, 0.34);
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(215, 222, 232, 0.95);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.72),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.24),
-      0 14px 34px rgba(18, 35, 58, 0.12);
-    backdrop-filter: blur(16px) saturate(1.55);
-    -webkit-backdrop-filter: blur(16px) saturate(1.55);
+      0 1px 2px rgba(20, 24, 31, 0.04),
+      0 6px 18px rgba(20, 24, 31, 0.05);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 
   .ios-glass-strong {
-    background:
-      linear-gradient(
-        150deg,
-        rgba(255, 255, 255, 0.6),
-        rgba(255, 255, 255, 0.16)
-      ),
-      rgba(208, 230, 255, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(210, 219, 230, 0.98);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.82),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.28),
-      0 18px 36px rgba(22, 49, 82, 0.16);
-    backdrop-filter: blur(20px) saturate(1.65);
-    -webkit-backdrop-filter: blur(20px) saturate(1.65);
+      0 1px 2px rgba(20, 24, 31, 0.05),
+      0 12px 24px rgba(20, 24, 31, 0.07);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 
   .ios-glass-pill {
-    border-radius: 999px;
-    background:
-      linear-gradient(
-        145deg,
-        rgba(255, 255, 255, 0.58),
-        rgba(255, 255, 255, 0.22)
-      ),
-      rgba(225, 238, 255, 0.38);
-    border: 1px solid rgba(255, 255, 255, 0.65);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.85),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.24),
-      0 10px 24px rgba(21, 40, 67, 0.11);
-    backdrop-filter: blur(14px) saturate(1.6);
-    -webkit-backdrop-filter: blur(14px) saturate(1.6);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(215, 222, 232, 0.96);
+    box-shadow: 0 1px 2px rgba(20, 24, 31, 0.05);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 
   .ios-accent-glow {
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.42),
-      0 8px 22px rgba(43, 72, 101, 0.22);
+      0 1px 2px rgba(20, 24, 31, 0.05),
+      0 10px 20px rgba(61, 88, 120, 0.14);
   }
 
   .glass-surface-dark {
@@ -122,8 +245,8 @@
   }
 
   .flat-surface {
-    background: #ece6dd;
-    border: 1px solid #d4cec4;
+    background: #ffffff;
+    border: 1px solid #d7dee8;
   }
 
   .ambient-grid {
@@ -132,16 +255,12 @@
       linear-gradient(90deg, rgba(106, 97, 88, 0.09) 1px, transparent 1px);
     background-size: 120px 120px;
     mask-image: radial-gradient(circle at center, black 30%, transparent 85%);
-    -webkit-mask-image: radial-gradient(
-      circle at center,
-      black 30%,
-      transparent 85%
-    );
+    -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 85%);
   }
 
   .glass-chip {
-    border: 1px solid rgba(212, 206, 196, 0.95);
-    background: rgba(248, 244, 238, 0.92);
+    border: 1px solid rgba(215, 222, 232, 0.96);
+    background: rgba(255, 255, 255, 0.92);
   }
 
   .text-balance {
@@ -161,5 +280,11 @@
   .animate-page-fade,
   .animate-soft-pulse {
     animation: none !important;
+  }
+
+  .liquid-glass::after {
+    /* Suppress the rim-light pseudo-element — no visual motion, but reduces
+       GPU layer promotion overhead on devices that opt out of animation */
+    display: none;
   }
 }

@@ -16,7 +16,7 @@ export async function GET(request: Request) {
 
   const subtitle =
     searchParams.get("subtitle")?.slice(0, 160) ??
-    "Software gebouwd op sterke fundamenten.";
+    "Early-career software developer with infrastructure roots.";
 
   return new ImageResponse(
     <div

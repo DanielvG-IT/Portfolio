@@ -21,8 +21,8 @@ export default function FeaturedProject({
   return (
     <MotionReveal delay={0.1} y={24} blur={10}>
       <GlassCard
-        variant="float"
         padding="lg"
+        hoverLift={false}
         className="transition-transform duration-700 ease-out hover:-translate-y-1">
         <div className="flex items-center justify-between gap-4">
           <p className="glass-chip rounded-pill px-3 py-1 text-label uppercase text-ink-3">

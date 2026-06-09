@@ -14,22 +14,24 @@
       "subline": "Early-career, systems-aware, en bewust dieper richting software development.",
       "ctaPrimary": "Bekijk het werk",
       "ctaSecondary": "Lees mijn verhaal",
-      "portraitNote": "Portret, 2026."
+      "portraitNote": "Portret, 2026.",
+      "name": "Daniël",
+      "roles": ["Software-ontwikkelaar", "Systeemdenker", ".NET-ontwikkelaar", "Infrastructure-bewust"]
     },
     "foundation": {
-      "heading": "Een ander startpunt.",
+      "heading": "Even over mij",
       "paragraphs": [
         "De meeste developers starten met code. Mijn start lag bij infrastructuur: live systemen, supportomgevingen en technische operatie waar betrouwbaarheid direct telt.",
         "Dat fundament bepaalt nog steeds hoe ik software bouw. Ik denk vanaf het begin aan afhankelijkheden, failure modes en onderhoudbaarheid."
       ]
     },
     "capabilities": {
-      "heading": "Waar ik mee werk",
+      "heading": "Wat ik bouw",
       "intro": "Een eerlijke kaart van huidige focus, fundament en groei.",
       "groups": [
         {
           "title": "Software development",
-          "prefix": "Working with",
+          "prefix": "Werkt met",
           "items": [
             ".NET / C#",
             "TypeScript",
@@ -41,7 +43,7 @@
         },
         {
           "title": "Infrastructuur en systemen",
-          "prefix": "Practical background in",
+          "prefix": "Praktische achtergrond in",
           "items": [
             "Linux",
             "Netwerken",
@@ -53,7 +55,7 @@
         },
         {
           "title": "Tooling en werkomgeving",
-          "prefix": "Comfortable with",
+          "prefix": "Comfortabel met",
           "items": [
             "Git",
             "Linux CLI",
@@ -65,18 +67,18 @@
       ]
     },
     "work": {
-      "heading": "Waar je verder kunt kijken",
-      "intro": "Het portfolio groeit nog, maar de richting is duidelijk: praktische systemen, productambitie en infrastructuur-aware engineering.",
+      "heading": "Uitgelichte projecten",
+      "intro": "Het portfolio groeit nog, maar de richting is duidelijk: infrastructuur-aware engineering, backend security en software die echte operationele problemen oplost.",
       "references": [
         {
-          "title": "StrengthSuite",
-          "summary": "Een gymplatform in opbouw dat backendservices, web en mobile interfaces, en Rust-gebaseerde edge devices voor fysieke toegangscontrole samenbrengt.",
-          "status": "Currently building"
+          "title": "OpenCaptive",
+          "summary": "Een open-source captive portal platform dat netwerkfundamenten verbindt met SaaS-architectuur — authenticatieflows, multi-tenancy en toegangsbeheer vanuit een infrastructuur-first perspectief.",
+          "status": "Vroege architectuurfase"
         },
         {
           "title": "Aegis.Auth",
-          "summary": "Een publieke .NET-authenticatie- en autorisatielibrary met focus op herbruikbare plug-and-play identity-functionaliteit.",
-          "status": "In progress"
+          "summary": "Een herbruikbare .NET authenticatie- en autorisatielibrary met focus op JWT, RBAC en claims-gebaseerde identity — beveiligingstooling gebouwd voor ontwikkelaars, niet voor eindgebruikers.",
+          "status": "Onderzoek en ontwikkeling"
         }
       ],
       "cta": "Bekijk de projecten"
@@ -121,78 +123,121 @@
   },
   "projects": {
     "eyebrow": "Projecten",
-    "headline": "Selected builds en technical explorations.",
-    "opening": "Het werk dat hier staat is echt. Sommige entries zijn afgerond, sommige worden nog gedocumenteerd, en sommige zijn actief in ontwikkeling.",
+    "headline": "Selected builds en technische verkenningen.",
+    "opening": "De meeste projecten hier zijn in de architectuur-, onderzoeks- of vroege implementatiefase. Ik gebruik ze als middel om software-engineering, productontwikkeling, networking, security en bedrijfsgericht probleemoplossen te verkennen.",
     "fields": {
       "what": "Wat het is",
-      "why": "Waarom het is gebouwd of onderzocht",
-      "tech": "Technologieen",
-      "outcome": "Wat is geleerd of opgelost",
+      "why": "Waarom het is gebouwd",
+      "tech": "Technologieën",
+      "outcome": "Wat ik leerde",
       "status": "Status",
       "link": "Meer detail"
     },
     "categories": [
       {
-        "label": "Selected builds",
-        "intro": "Productgerichte kernbuilds die de huidige portfolio-richting bepalen.",
+        "label": "Uitgelicht project",
+        "intro": "Het project dat het best mijn achtergrond, focus en technische diepgang samenbrengt.",
         "items": [
           {
-            "title": "StrengthSuite",
-            "what": "Een gym access-systeem dat doorgroeit naar een breder gym management platform.",
-            "why": "Om software te bouwen die productervaring koppelt aan operationele realiteit, secure access flows en fysieke infrastructuur.",
-            "technologies": ["C# / .NET", "Next.js", "React Native", "Rust"],
-            "outcome": "Laat full-stack systems thinking zien over backendservices, web, mobile en hardware-adjacent edge logic.",
-            "status": "Currently building",
+            "title": "OpenCaptive",
+            "what": "OpenCaptive is een open-source captive portal platform waarmee organisaties aangepaste netwerktoegangsbelevingen kunnen bouwen. Het doel is bedrijven flexibele authenticatie-, branding- en toegangsbeheersmogelijkheden te bieden zonder afhankelijk te zijn van gesloten systemen.",
+            "why": "Mijn achtergrond in netwerken en systeembeheer wekte interesse in hoe gebruikers omgaan met netwerkinfrastructuur. OpenCaptive verkent het snijpunt tussen netwerken, software-engineering en bedrijfsoperaties — een natuurlijke vervolgstap vanuit mijn MBO-achtergrond richting productgericht software bouwen.",
+            "technologies": [
+              ".NET",
+              "ASP.NET Core",
+              "Captive Portal Concepten",
+              "Authenticatieflows",
+              "Netwerkfundamenten",
+              "API-ontwerp",
+              "Multi-Tenant Architectuuronderzoek",
+              "Infrastructuurintegratie"
+            ],
+            "outcome": [
+              "Concepten rondom netwerktoegangscontrole",
+              "Software ontwerpen rond infrastructuursystemen",
+              "Overwegingen bij multi-tenant architectuur",
+              "Authenticatie- en gebruikersinstapreflows",
+              "Traditioneel infrastructuurgericht werk omzetten naar software"
+            ],
+            "status": "Vroege architectuur- en planningsfase",
+            "href": "",
+            "linkLabel": ""
+          }
+        ]
+      },
+      {
+        "label": "Geselecteerde builds",
+        "intro": "Backend security-tooling en een platform dat systeemdenken vertaalt naar echte productproblemen.",
+        "items": [
+          {
+            "title": "Aegis.Auth",
+            "what": "Aegis.Auth is een herbruikbare authenticatie- en autorisatiebibliotheek voor .NET-applicaties. Het doel is identiteitsbeheer te vereenvoudigen door veelgebruikte beveiligingsfunctionaliteit aan te bieden via een ontwikkelaarsvriendelijk pakket.",
+            "why": "Authenticatie is een vereiste voor vrijwel elke moderne applicatie. In plaats van steeds dezelfde identity-logica opnieuw te bouwen, wilde ik een herbruikbare beveiligingsfundament verkennen dat in meerdere projecten geïntegreerd kan worden.",
+            "technologies": [
+              "C#",
+              ".NET",
+              "JWT Authenticatie",
+              "Rolgebaseerde Toegangscontrole (RBAC)",
+              "Claims-gebaseerde Autorisatie",
+              "Beveiligingsbest Practices",
+              "NuGet Pakketontwikkeling"
+            ],
+            "outcome": [
+              "Concepten rondom identiteits- en toegangsbeheer",
+              "Veilige tokenverwerking en sessiearchitectuur",
+              "Autorisatie-architectuurpatronen",
+              "Ontwerp van herbruikbare libraries",
+              "Software bouwen voor andere ontwikkelaars"
+            ],
+            "status": "Onderzoek en ontwikkeling",
             "href": "",
             "linkLabel": ""
           },
           {
+            "title": "StrengthSuite",
+            "what": "StrengthSuite is een gymmanagementplatform ontworpen om ledenbeheer, abonnementen, toegangscontrole en trainingsgerichte functionaliteit in één systeem te combineren. De langetermijnvisie is software direct te koppelen aan fysieke gyminfrastructuur zoals toegangspoorten, QR-toegang en ledenvalidatie.",
+            "why": "Het project begon vanuit interesse in het oplossen van echte operationele uitdagingen bij sportscholen, terwijl ik verkende hoe software kan samenwerken met fysieke omgevingen. In plaats van nog een generieke CRUD-applicatie te bouwen, was het doel een platform te ontwerpen dat echte bedrijfsprocessen ondersteunt en veilige toegang tot faciliteiten regelt.",
+            "technologies": [
+              "C# / .NET",
+              "ASP.NET Core Web API",
+              "Next.js",
+              "React Native",
+              "PostgreSQL",
+              "REST APIs",
+              "Authenticatie & Autorisatie",
+              "Edge / Hardware Integratieonderzoek"
+            ],
+            "outcome": [
+              "Software ontwerpen rond echte bedrijfsprocessen",
+              "Schaalbare backendarchitecturen bouwen",
+              "Authenticatie en rolgebaseerde rechten beheren",
+              "Digitale systemen koppelen aan fysieke infrastructuur",
+              "Productvereisten afwegen tegen technische beperkingen"
+            ],
+            "status": "Actief ontworpen en geprototyped",
+            "href": "",
+            "linkLabel": ""
+          }
+        ]
+      },
+      {
+        "label": "Vroeg concept",
+        "intro": "Een idee dat nog niet in actieve ontwikkeling is maar de productdenklijn uitbreidt.",
+        "items": [
+          {
             "title": "SynqWealth",
-            "what": "Een personal finance-applicatie die gebruikers een duidelijk overzicht geeft van hun financiele wereld.",
-            "why": "Om praktische software te maken voor net worth, spending, savings, investments, assets, budgets, doelen en gedeeld partnerinzicht.",
+            "what": "Een personal finance platform concept dat verkent hoe inkomen, uitgaven, investeringen, spaargeld en nettowaarde samengebracht kunnen worden in één eerlijk financieel overzicht.",
+            "why": "Financiële software vereist zorgvuldig domeinontwerp. Dit project richt zich momenteel op het in kaart brengen van de dataarchitectuur voordat er aan implementatie begonnen wordt.",
             "technologies": [
-              "Domain modeling",
-              "Financial tracking flows",
-              "Product architecture"
+              "Domain-Driven Design",
+              "Financieel Datamodellering",
+              "Productarchitectuur"
             ],
-            "outcome": "Versterkt product-oriented engineering met gestructureerde data, heldere gebruikersflows en echte dagelijkse bruikbaarheid.",
-            "status": "In progress",
-            "href": "",
-            "linkLabel": ""
-          }
-        ]
-      },
-      {
-        "label": "Technical explorations",
-        "intro": "Backend-, security- en infrastructuurgericht werk met focus op herbruikbare technische fundamenten.",
-        "items": [
-          {
-            "title": "Aegis.Auth",
-            "what": "Een publieke .NET / C# library voor authenticatie en autorisatie.",
-            "why": "Om plug-and-play identity-functionaliteit te bieden en herbruikbare backend tooling te bouwen naast user-facing apps.",
-            "technologies": [".NET", "C#", "Authentication", "Authorization"],
-            "outcome": "Toont groeiende focus op backend security-vraagstukken en foundational developer tooling.",
-            "status": "In progress",
-            "href": "",
-            "linkLabel": ""
-          }
-        ]
-      },
-      {
-        "label": "In progress",
-        "intro": "Infrastructuur-aware systemen die nu worden gevormd tot praktische softwareproducten.",
-        "items": [
-          {
-            "title": "OpenCaptive",
-            "what": "Een open-source captive portal-oplossing voor aanpasbare zakelijke toegangsbeleving.",
-            "why": "Om netwerkomgevingen en operationele context te verbinden met productized softwareflows zoals login, betaling en business-specifiek toegangsbeheer.",
-            "technologies": [
-              "Captive portal architecture",
-              "Access flow design",
-              "Operational networking context"
+            "outcome": [
+              "Complexe financiële domeinen modelleren",
+              "Datastructuren ontwerpen voor schaalbaarheid op lange termijn"
             ],
-            "outcome": "Verbreedt infrastructuurroots naar software die netwerkcontrole en user-facing productgedrag met elkaar verbindt.",
-            "status": "Early stage",
+            "status": "Concept en architectuurfase — nog niet actief in ontwikkeling",
             "href": "",
             "linkLabel": ""
           }
@@ -253,7 +298,7 @@
     "emailLabel": "E-mail",
     "email": "hello@danielvanginneken.nl",
     "linkedinLabel": "LinkedIn",
-    "linkedin": "https://www.linkedin.com",
+    "linkedin": "https://www.linkedin.com/in/danielvanginneken",
     "response": "Ik reageer op relevante professionele berichten meestal binnen twee werkdagen."
   }
 }

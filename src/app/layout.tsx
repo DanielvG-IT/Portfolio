@@ -1,13 +1,29 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
+import { headers } from "next/headers";
 
 import JsonLd from "@/components/seo/JsonLd";
-import { absoluteUrl, getSiteUrl, siteConfig } from "@/lib/site-config";
-import { organizationJsonLd } from "@/lib/structured-data";
+import ThemeProvider from "@/components/ui/ThemeProvider";
+import {
+  absoluteUrl,
+  getDescription,
+  getSiteUrl,
+  siteConfig,
+} from "@/lib/site-config";
+import { personJsonLd, websiteJsonLd } from "@/lib/structured-data";
 
 import "./globals.css";
 
+// Self-hosted at build time (served same-origin from /_next/static) so the
+// strict CSP/COEP in next.config.ts needs no Google Fonts allowance. Exposed
+// as a CSS variable that Tailwind's font-sans/display tokens resolve.
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
+
 const metadataBase = getSiteUrl();
-const defaultOgImage = absoluteUrl("/images/portrait.jpg");
 
 export const metadata: Metadata = {
   metadataBase,
@@ -22,18 +38,25 @@ export const metadata: Metadata = {
   creator: "Daniël van Ginneken",
   publisher: "Daniël van Ginneken",
   alternates: {
-    canonical: "/",
+    canonical: absoluteUrl("/nl"),
+    languages: {
+      "nl-NL": "/nl",
+      "en-US": "/en",
+      "x-default": "/nl",
+    },
   },
   openGraph: {
     type: "website",
-    url: "/",
     siteName: siteConfig.applicationName,
     title: "Daniël van Ginneken — Portfolio",
     description: siteConfig.description,
     locale: "nl_NL",
+    alternateLocale: ["en_US"],
     images: [
       {
-        url: defaultOgImage,
+        url: absoluteUrl(
+          `/api/og?title=${encodeURIComponent("Daniël van Ginneken")}&subtitle=${encodeURIComponent(siteConfig.description)}`,
+        ),
         width: 1200,
         height: 630,
         alt: "Daniël van Ginneken Portfolio",
@@ -45,7 +68,11 @@ export const metadata: Metadata = {
     title: "Daniël van Ginneken — Portfolio",
     description: siteConfig.description,
     creator: siteConfig.twitterHandle,
-    images: [defaultOgImage],
+    images: [
+      absoluteUrl(
+        `/api/og?title=${encodeURIComponent("Daniël van Ginneken")}&subtitle=${encodeURIComponent(siteConfig.description)}`,
+      ),
+    ],
   },
   robots: {
     index: true,
@@ -60,16 +87,78 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+// Next 16 requires theme-color in the viewport export, not metadata. Defined
+// once here on the root layout; inherited by every route.
+export const viewport: Viewport = {
+  themeColor: "#0A84FF",
+};
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headersList = await headers();
+  const locale = headersList.get("x-locale") ?? "nl";
+  const description = getDescription(locale);
+
   return (
-    <html lang="nl" className="h-full">
-      <body className="min-h-full bg-ground text-ink font-sans">
-        <JsonLd id="organization-schema" data={organizationJsonLd()} />
-        {children}
+    <html
+      lang={locale}
+      className={`h-full ${inter.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <meta
+          name="description"
+          content={description}
+          key="locale-description"
+        />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+      </head>
+      <body className="min-h-full bg-bg text-text font-sans">
+        {/* SVG filter definition for Liquid Glass refraction (Chromium only).
+            Must live in the DOM so backdrop-filter: url('#liquid-glass') resolves. */}
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          style={{ position: "absolute", width: 0, height: 0, overflow: "hidden" }}
+        >
+          <defs>
+            <filter
+              id="liquid-glass"
+              x="-10%"
+              y="-10%"
+              width="120%"
+              height="120%"
+              colorInterpolationFilters="sRGB"
+            >
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.65"
+                numOctaves="3"
+                seed="2"
+                stitchTiles="stitch"
+                result="noise"
+              />
+              <feGaussianBlur stdDeviation="0.4" in="noise" result="blurred-noise" />
+              <feDisplacementMap
+                in="SourceGraphic"
+                in2="blurred-noise"
+                scale="12"
+                xChannelSelector="R"
+                yChannelSelector="G"
+              />
+            </filter>
+          </defs>
+        </svg>
+
+        <ThemeProvider>
+          <JsonLd id="person-schema" data={personJsonLd()} />
+          <JsonLd id="website-schema" data={websiteJsonLd()} />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

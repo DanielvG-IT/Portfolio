@@ -1,18 +1,11 @@
 import clsx from "clsx";
 
 interface GlassCardProps {
-  variant?: "float" | "flat" | "inset";
   padding?: "sm" | "md" | "lg";
   children: React.ReactNode;
   className?: string;
+  hoverLift?: boolean;
 }
-
-const variantClasses: Record<NonNullable<GlassCardProps["variant"]>, string> = {
-  float: "glass-surface rounded-card shadow-glass",
-  flat: "flat-surface rounded-card-sm shadow-surface-1",
-  inset:
-    "rounded-[10px_10px_10px_0] border border-[rgba(28,26,23,0.08)] bg-[rgba(28,26,23,0.06)]",
-};
 
 const paddingClasses: Record<NonNullable<GlassCardProps["padding"]>, string> = {
   sm: "p-6",
@@ -21,18 +14,20 @@ const paddingClasses: Record<NonNullable<GlassCardProps["padding"]>, string> = {
 };
 
 export default function GlassCard({
-  variant = "float",
   padding = "lg",
   children,
   className,
+  hoverLift = true,
 }: GlassCardProps) {
   return (
     <div
       className={clsx(
-        variantClasses[variant],
+        "liquid-glass rounded-card",
+        hoverLift && "transition-transform duration-300 ease-out hover:-translate-y-1",
         paddingClasses[padding],
         className,
-      )}>
+      )}
+    >
       {children}
     </div>
   );

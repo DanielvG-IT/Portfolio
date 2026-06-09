@@ -6,15 +6,20 @@ const cspDirectives = [
   "default-src 'self'",
   "base-uri 'self'",
   "form-action 'self'",
+  "frame-src 'none'",
   "frame-ancestors 'none'",
   "object-src 'none'",
+  "worker-src 'none'",
+  "manifest-src 'self'",
   isDev
     ? "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
     : "script-src 'self' 'unsafe-inline'",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: https:",
+  "img-src 'self' data: https://avatars.githubusercontent.com https://github.com",
   "font-src 'self' data:",
-  "connect-src 'self' https: ws: wss:",
+  isDev
+    ? "connect-src 'self' https: ws: wss:"
+    : "connect-src 'self' https://danielvanginneken.nl",
   "upgrade-insecure-requests",
 ].join("; ");
 
@@ -58,13 +63,24 @@ const nextConfig: NextConfig = {
           { key: "X-Permitted-Cross-Domain-Policies", value: "none" },
           { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
           { key: "Cross-Origin-Resource-Policy", value: "same-origin" },
+          { key: "Cross-Origin-Embedder-Policy", value: "require-corp" },
           {
             key: "Strict-Transport-Security",
             value: "max-age=63072000; includeSubDomains; preload",
           },
           {
             key: "Permissions-Policy",
-            value: "camera=(), microphone=(), geolocation=(), payment=()",
+            value: [
+              "camera=()",
+              "microphone=()",
+              "geolocation=()",
+              "payment=()",
+              "interest-cohort=()",
+              "accelerometer=()",
+              "autoplay=()",
+              "fullscreen=(self)",
+              "display-capture=()",
+            ].join(", "),
           },
           {
             key: "Content-Security-Policy",
@@ -75,12 +91,6 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  // ─── Redirects ────────────────────────────────────────
-  // async redirects() {
-  //   return [];
-  // },
-
-  // ─── Env vars (publiek) ───────────────────────────────
   env: {
     NEXT_PUBLIC_APP_VERSION: process.env.npm_package_version ?? "dev",
   },

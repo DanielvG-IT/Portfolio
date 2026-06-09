@@ -68,7 +68,6 @@ export default function Hero({
 
           <MotionReveal delay={0.32} y={24} blur={10}>
             <GlassCard
-              variant="float"
               padding="sm"
               className="mt-10 max-w-[520px]">
               <div className="grid gap-3 md:grid-cols-3">
